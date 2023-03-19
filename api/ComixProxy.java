@@ -10,21 +10,16 @@ public class ComixProxy implements IComix {
     public boolean login(String username, String password) {
         api = new ComixAPI(); // only create the API if we need it
         boolean resp = api.login(username, password);
-        if (resp) {
-            System.out.println("Login successful");
-        } else {
-            System.out.println("Login failed");
-            api = null;
-        }
+        if (!resp) { api = null; }
         return resp;
     }
 
     // TODO: Add more methods, and remove this one
-    public void doSomething() {
+    public String doSomething() {
         if (api == null) {
-            System.out.println("Not logged in");
+            return "Not logged in (Response from Proxy)";
         } else {
-            api.doSomething();
+            return api.doSomething();
         }
     }
 

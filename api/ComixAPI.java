@@ -12,7 +12,7 @@ public class ComixAPI implements IComix {
     }
     
     // TODO: Add more methods, and remove this one
-    public void doSomething() {
-        System.out.println("Doing something");
+    public String doSomething() {
+        return "The API just did something";
     }
 }
