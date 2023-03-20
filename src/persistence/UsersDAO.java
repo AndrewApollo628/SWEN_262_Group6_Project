@@ -12,22 +12,19 @@ import user.User;
  */
 public interface UsersDAO {
 
-    User[] getUsers() throws IOException;
+    ArrayList<User> getUsers() throws IOException;
 
-    User getUser(int userid) throws IOException;
+    User getUser(String username) throws IOException;
 
     User createUser(User user) throws IOException;
 
-    ArrayList<Comic> getCollection(int userid) throws IOException;
+    ArrayList<Comic> getCollection(String username) throws IOException;
 
-    Boolean addToCollection(int userid, int productid) throws IOException;
+    Boolean addToCollection(String username, Comic comic) throws IOException;
 
-    Boolean removeFromCollection(int userid, int productid) throws IOException;
+    Boolean removeFromCollection(String username, Comic comic) throws IOException;
 
-    boolean deleteUser(int userid) throws IOException;
+    boolean deleteUser(String username) throws IOException;
 
-    Boolean checkout(int userid) throws IOException;
-
-    int getUserID(String username) throws IOException;
 
 }

@@ -5,8 +5,8 @@
         "collection": []
     },
     {
-        "uname": "user",
-        "upass": "user",
+        "username": "user",
+        "password": "user",
         "collection": []
     }
 ]

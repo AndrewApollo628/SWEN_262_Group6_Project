@@ -1,10 +1,14 @@
 package persistence;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import comic.Comic;
 import user.User;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Defines the Data Access Object interface for {@linkplain User} data persistence
@@ -12,59 +16,100 @@ import user.User;
  * @author aditya
  */
 public class UsersJsonDAO implements UsersDAO {
+    private String filename;
+    private ArrayList<User> users;
+    private ObjectMapper mapper;
 
-    @Override
-    public User[] getUsers() throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsers'");
+    UsersJsonDAO(String filename) {
+        this.filename = filename;
+        this.users = new ArrayList<User>();
+        this.mapper = new ObjectMapper();
+        try {
+            load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void load() throws Exception {
+        User[] usersArray = mapper.readValue(new File(filename), User[].class);
+        for (User user : usersArray) {
+            users.add(user);
+        }
+        
     }
 
     @Override
-    public User getUser(int userid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUser'");
+    public ArrayList<User> getUsers() throws IOException {
+        return users;
+    }
+
+    @Override
+    public User getUser(String username) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     @Override
     public User createUser(User user) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createUser'");
+        users.add(user);
+        mapper.writeValue(new File(filename), users);
+        return user;
     }
 
     @Override
-    public ArrayList<Comic> getCollection(int userid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCollection'");
+    public ArrayList<Comic> getCollection(String username) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user.getCollection();
+            }
+        }
+        return null;
     }
 
     @Override
-    public Boolean addToCollection(int userid, int productid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addToCollection'");
+    public Boolean addToCollection(String username, Comic comic) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                user.getCollection().add(comic);
+                mapper.writeValue(new File(filename), users);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
-    public Boolean removeFromCollection(int userid, int productid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFromCollection'");
+    public Boolean removeFromCollection(String username, Comic comic) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                user.getCollection().remove(comic);
+                mapper.writeValue(new File(filename), users);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
-    public boolean deleteUser(int userid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+    public boolean deleteUser(String username) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                users.remove(user);
+                mapper.writeValue(new File(filename), users);
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
-    public Boolean checkout(int userid) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkout'");
-    }
-
-    @Override
-    public int getUserID(String username) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUserID'");
+    public static void main(String[] args) throws Exception {
+        UsersDAO usersDAO = new UsersJsonDAO("db/users.json");
+        System.out.println(usersDAO.getUsers());
     }
     
 }

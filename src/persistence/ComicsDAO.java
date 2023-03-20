@@ -12,7 +12,7 @@ import comic.Comic;
  */
 public interface ComicsDAO {
 
-    Comic[] getComics() throws IOException;
+    ArrayList<Comic> getComics() throws IOException;
 
     Comic getComic(int comicID) throws IOException;
 

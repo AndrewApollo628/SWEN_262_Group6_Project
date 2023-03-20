@@ -2,6 +2,8 @@ package user;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import comic.Comic;
+
 /**
  * Defines the User class
  * 
@@ -13,18 +15,16 @@ public class User {
 
     @JsonProperty("username") private String username;
     @JsonProperty("password") private String password;
-    @JsonProperty("collection") private ArrayList<Integer> collection;
+    @JsonProperty("collection") private ArrayList<Comic> collection;
 
-    User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") ArrayList<Integer> collection) {
+    User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") ArrayList<Comic> collection) {
         this.username = username;
         this.password = password;
-        this.collection = collection;
-    }
-
-    User(@JsonProperty("username") String username, @JsonProperty("password") String password) {
-        this.username = username;
-        this.password = password;
-        this.collection = new ArrayList<Integer>();
+        if (collection == null) {
+            this.collection = new ArrayList<Comic>();
+        } else {
+            this.collection = collection;
+        }
     }
 
     public String getUsername() {
@@ -43,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<Integer> getCollection() {
+    public ArrayList<Comic> getCollection() {
         return collection;
     }
 
-    public void setCollection(ArrayList<Integer> collection) {
+    public void setCollection(ArrayList<Comic> collection) {
         this.collection = collection;
     }
 
