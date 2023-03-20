@@ -15,6 +15,7 @@ public class ComixCli {
     public static void printHelp() {
         System.out.println("Available commands:");
         System.out.println("  -login <username> <password>");
+        System.out.println("  -logout");
         System.out.println("  -doSomething");
         System.out.println("  -help");
         System.out.println("  -exit");
@@ -34,9 +35,17 @@ public class ComixCli {
            } else {
                 ColorWriter.out("Login failed\n", ColorWriter.ANSI_RED);
            }
-        } 
+        }
+        else if (command.equals("logout")) {
+            proxy.logout();
+            ColorWriter.out("Logged out\n", ColorWriter.ANSI_GREEN);
+        }
         else if (command.equals("doSomething")) {
-            System.out.println(proxy.doSomething());
+            if (proxy.doSomething() == null) {
+                ColorWriter.out("Not logged in\n", ColorWriter.ANSI_RED);
+            } else {
+                ColorWriter.out(proxy.doSomething()+"\n", ColorWriter.ANSI_WHITE);
+            }
         } 
         else if (command.equals("help")) {
             printHelp();

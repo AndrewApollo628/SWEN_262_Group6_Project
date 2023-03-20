@@ -24,7 +24,7 @@ public class ComixProxy implements IComix {
     // TODO: Add more methods, and remove this one
     public String doSomething() {
         if (api == null) {
-            return "Not logged in (Response from Proxy)";
+            return null;
         } else {
             return api.doSomething();
         }
