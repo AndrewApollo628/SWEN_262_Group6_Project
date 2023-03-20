@@ -55,13 +55,18 @@ public class ComixCli {
         printHelp();
         while (true) {
             System.out.print("> ");
-            String[] commands = readLine();
+            String[] commands = null;
+            try {
+                commands = readLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+                scanner.close();
+                System.exit(1);
+            }
             try {
                 handle(commands);
             } catch (Exception e) {
                 ColorWriter.out(e.getMessage(), ColorWriter.ANSI_RED+ColorWriter.ANSI_BLINK);
-                scanner.close();
-                System.exit(1);
             }
         }
     }
