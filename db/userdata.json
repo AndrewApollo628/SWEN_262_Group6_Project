@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "uname": "admin",
+        "upass": "admin",
+        "collection": []
+    },
+    {
+        "id": 2,
+        "uname": "user",
+        "upass": "user",
+        "collection": []
+    }
+]

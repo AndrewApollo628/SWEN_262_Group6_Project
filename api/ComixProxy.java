@@ -14,6 +14,13 @@ public class ComixProxy implements IComix {
         return resp;
     }
 
+    public void logout() {
+        if (api != null) {
+            api.logout();
+            api = null;
+        }
+    }
+
     // TODO: Add more methods, and remove this one
     public String doSomething() {
         if (api == null) {
