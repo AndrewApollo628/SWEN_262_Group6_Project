@@ -20,7 +20,7 @@ public class UsersJsonDAO implements UsersDAO {
     private ArrayList<User> users;
     private ObjectMapper mapper;
 
-    UsersJsonDAO(String filename) {
+    public UsersJsonDAO(String filename) {
         this.filename = filename;
         this.users = new ArrayList<User>();
         this.mapper = new ObjectMapper();
@@ -107,6 +107,16 @@ public class UsersJsonDAO implements UsersDAO {
         return false;
     }
 
+    @Override
+    public boolean check(String username, String password) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static void main(String[] args) throws Exception {
         UsersDAO usersDAO = new UsersJsonDAO("db/users.json");
         System.out.println(usersDAO.getUsers());

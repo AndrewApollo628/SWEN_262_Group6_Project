@@ -26,5 +26,6 @@ public interface UsersDAO {
 
     boolean deleteUser(String username) throws IOException;
 
+    boolean check(String username, String password) throws IOException;
 
 }

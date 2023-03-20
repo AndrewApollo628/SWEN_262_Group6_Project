@@ -1,16 +1,28 @@
 package api;
 
+import persistence.UsersDAO;
+import persistence.UsersJsonDAO;
+
 public class ComixAPI implements IComix {
+    private UsersDAO usersDAO;
 
     private String currentUser;
 
     public ComixAPI() {
         System.out.println("  -COMIX API v0.1");
+        usersDAO = new UsersJsonDAO("db/users.json");
     }
 
     public boolean login(String username, String password) {
-        currentUser = username;
-        return true;
+        try {
+            if (usersDAO.check(username, password)) {
+                currentUser = username;
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void logout() { currentUser = null; }
