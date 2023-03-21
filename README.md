@@ -14,7 +14,7 @@ SWEN 262 Group 6
 * you are now nunning
 
 ## How to run the project
-* Run comixcli/COMIXCli.java
+* Run cli/COMIXCli.java
 
 ## Trello Board
 https://trello.com/b/XocrP3sE/swen-262-team-6-board
