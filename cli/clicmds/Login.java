@@ -6,7 +6,6 @@ import cli.ColorWriter;
 public class Login implements ICliCmd {
 
     private IComix api;
-
     public static final String COMMAND = "login";
 
     public Login(IComix api) { this.api = api; }

@@ -13,10 +13,9 @@ public class CommandMap {
 
     CommandMap(IComix api) {
         commands.put(Login.COMMAND, new Login(api));
+        commands.put(Logout.COMMAND, new Logout(api));
         commands.put(Help.COMMAND, new Help(commands));
-        // commands.put("logout", new Logout(api));
-        // commands.put("doSomething", new DoSomething(api));
-        // commands.put("help", new Help());
+        commands.put(Example.COMMAND, new Example(api));
         // commands.put("exit", new Exit());
     }
 

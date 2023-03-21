@@ -11,7 +11,7 @@ public class ComixAPI implements IComix {
     public String getCurrentUser() { return currentUser; }
 
     public ComixAPI() {
-        System.out.println("  -COMIX API v0.1");
+        System.out.println("  - loaded COMIX API v0.1");
         usersDAO = new UsersJsonDAO("db/users.json");
     }
 
