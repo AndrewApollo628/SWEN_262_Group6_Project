@@ -1,9 +1,5 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\adity\\junit-platform-console-standalone-1.8.2.jar",
-        "c:\\Users\\adity\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.13.1\\*",
-        "C:\\Users\\adity\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.13.1\\*",
-        "c:\\Users\\adity\\jackson-core-2.14.0.jar"
     ]
 }
