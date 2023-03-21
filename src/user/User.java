@@ -17,7 +17,7 @@ public class User {
     @JsonProperty("password") private String password;
     @JsonProperty("collection") private ArrayList<Comic> collection;
 
-    User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") ArrayList<Comic> collection) {
+    public User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") ArrayList<Comic> collection) {
         this.username = username;
         this.password = password;
         if (collection == null) {
