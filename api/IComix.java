@@ -9,4 +9,5 @@ public interface IComix {
     // TODO: Add more methods, and remove this one
     String doSomething();
     
+    String getCurrentUser();
 }

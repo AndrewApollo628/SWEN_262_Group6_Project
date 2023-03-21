@@ -7,6 +7,11 @@ public class ComixProxy implements IComix {
         System.out.println("  -COMIX Proxy v0.1");
     }
 
+    public String getCurrentUser() {
+        if (api == null) { return null; }
+        else { return api.getCurrentUser(); }
+    }
+
     public boolean login(String username, String password) {
         api = new ComixAPI(); // only create the API if we need it
         boolean resp = api.login(username, password);

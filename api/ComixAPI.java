@@ -1,5 +1,6 @@
 package api;
 
+
 import persistence.UsersDAO;
 import persistence.UsersJsonDAO;
 
@@ -7,6 +8,7 @@ public class ComixAPI implements IComix {
     private UsersDAO usersDAO;
 
     private String currentUser;
+    public String getCurrentUser() { return currentUser; }
 
     public ComixAPI() {
         System.out.println("  -COMIX API v0.1");
