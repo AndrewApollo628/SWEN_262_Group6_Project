@@ -16,5 +16,10 @@ SWEN 262 Group 6
 ## How to run the project
 * Run cli/COMIXCli.java
 
+## How to add a new command
+* Go to the cli/clicmds directory and create a copy of the example command, rename it.
+* Modify it to fit command requirements. The COMMAND string is what is used to invoke the command by the cli
+* Add the new command to the cli/CommandMap.java
+
 ## Trello Board
 https://trello.com/b/XocrP3sE/swen-262-team-6-board
