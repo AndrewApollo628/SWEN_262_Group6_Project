@@ -2,6 +2,12 @@ package comic;
 
 import java.util.List;
 
+/**
+ * Defines the Comic Interface 
+ * 
+ * @author Andrew Apollo 
+ */
+
 public interface Comic {
 
     public String getName();
@@ -23,5 +29,5 @@ public interface Comic {
     public int getValue();
 
     public void setValue(int value);
-    
+
 }
