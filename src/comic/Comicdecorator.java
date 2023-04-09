@@ -8,6 +8,7 @@ public abstract class Comicdecorator implements Comic{
     
     @JsonProperty("Full Title") private String fullTitle;
     @JsonProperty("publisher") private String publisher;
+    @JsonProperty("Series") private String series;
     //@JsonProperty("volumeNumber") private int volumeNumber;
     @JsonProperty("Issue") private int issue;
     @JsonProperty("Release Date") private String publicationDate; 
@@ -15,17 +16,23 @@ public abstract class Comicdecorator implements Comic{
     @JsonProperty("description") private String description;
     //@JsonProperty("value") private int value;
 
-    public Comicdecorator(@JsonProperty("Full Title") String fullTitle, @JsonProperty("publisher") String publisher, @JsonProperty("volumeNumber") int volumeNumber,
-                          @JsonProperty("Issue") int issue, @JsonProperty("publicationDate") String publicationDate, @JsonProperty("creators") List<String> creators, 
-                          @JsonProperty("principleCharacters") List<String> principleCharacters, @JsonProperty("description") String description, @JsonProperty("value") int value  ) 
+    public Comicdecorator(@JsonProperty("Full Title") String fullTitle, 
+                        @JsonProperty("publisher") String publisher, 
+                        int volumeNumber, 
+                        @JsonProperty("Issue") int issue, 
+                        @JsonProperty("publicationDate") String publicationDate, 
+                        @JsonProperty("creators") List<String> creators, 
+                        @JsonProperty("principleCharacters") List<String> principleCharacters, 
+                        @JsonProperty("description") String description, 
+                        @JsonProperty("value") int value, 
+                        @JsonProperty("Series")  String series)
         {
             this.fullTitle = fullTitle;
             this.publisher = publisher;
-            //this.volumeNumber = volumeNumber;
+            //this.volumeNumber = ;
             this.issue = issue;
             this.publicationDate = publicationDate;
             this.creators = creators;
-            //this.principleCharacters = principleCharacters;
             this.description = description;
             //this.value = value;
     }
