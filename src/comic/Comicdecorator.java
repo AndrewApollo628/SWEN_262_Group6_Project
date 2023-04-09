@@ -9,7 +9,7 @@ public abstract class Comicdecorator implements Comic{
     @JsonProperty("Full Title") private String fullTitle;
     @JsonProperty("publisher") private String publisher;
     @JsonProperty("Series") private String series;
-    //@JsonProperty("volumeNumber") private int volumeNumber;
+    private int volumeNumber;
     @JsonProperty("Issue") private int issue;
     @JsonProperty("Release Date") private String publicationDate; 
     @JsonProperty("creators") private List<String> creators; 
@@ -29,7 +29,14 @@ public abstract class Comicdecorator implements Comic{
         {
             this.fullTitle = fullTitle;
             this.publisher = publisher;
-            //this.volumeNumber = ;
+
+            if(fullTitle.contains("vol. ")){
+                String splitString[] = fullTitle.split("vol. ");
+                this.volumeNumber = Integer.valueOf(splitString[1]);
+            } else {
+                this.volumeNumber = -1;
+            }
+
             this.issue = issue;
             this.publicationDate = publicationDate;
             this.creators = creators;
@@ -47,10 +54,10 @@ public abstract class Comicdecorator implements Comic{
         return publisher;
     }
 
-    // @Override
-    // public int getVolumeNumber() {
-    //     return volumeNumber;
-    // }
+    @Override
+    public int getVolumeNumber() {
+        return volumeNumber;
+    }
 
     @Override
     public int getIssue() {

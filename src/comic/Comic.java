@@ -14,7 +14,7 @@ public interface Comic {
     
     public String getPublisher();
 
-    //public int getVolumeNumber();
+    public int getVolumeNumber();
 
     public int getIssue();
 
