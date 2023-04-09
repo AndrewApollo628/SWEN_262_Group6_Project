@@ -10,24 +10,24 @@ import java.util.List;
 
 public interface Comic {
 
-    public String getName();
+    public String getFullTitle();
     
     public String getPublisher();
 
-    public int getVolumeNumber();
+    //public int getVolumeNumber();
 
-    public int getIssueNumber();
+    public int getIssue();
 
     public String getPublicationDate();
 
     public List<String> getCreators();
 
-    public List<String> getPrincipleCharacters();
+    //public List<String> getPrincipleCharacters();
 
     public String getDescription();
 
-    public int getValue();
+    //public int getValue();
 
-    public void setValue(int value);
+    //public void setValue(int value);
 
 }

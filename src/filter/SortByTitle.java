@@ -1,6 +1,5 @@
 package filter;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -15,10 +14,10 @@ public class SortByTitle implements ComicSorter{
     @Override
     public void doSort(List<Comic> comicList, boolean reverse){
         if(reverse==false){
-            Collections.sort(comicList, Comparator.comparing(Comic::getName).thenComparing(Comparator.comparing(Comic::getIssueNumber)));
+            Collections.sort(comicList, Comparator.comparing(Comic::getFullTitle).thenComparing(Comparator.comparing(Comic::getIssue)));
         }
         else{
-            Collections.sort(comicList, Comparator.comparing(Comic::getName).reversed().thenComparing(Comparator.comparing(Comic::getIssueNumber).reversed()));
+            Collections.sort(comicList, Comparator.comparing(Comic::getFullTitle).reversed().thenComparing(Comparator.comparing(Comic::getIssue).reversed()));
         }
     }
 }

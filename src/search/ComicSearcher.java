@@ -16,7 +16,7 @@ public class ComicSearcher {
         List<Comic> searchResultList = new ArrayList<Comic>();
         List<Comic> comicList = dao.getComics();
         for (Comic comic : comicList) {
-            if(comic.getName().contains(searchTerm)
+            if(comic.getFullTitle().contains(searchTerm)
                 || comic.getDescription().contains(searchTerm)
                 || checkInCreators(comic, searchTerm)
                 ){

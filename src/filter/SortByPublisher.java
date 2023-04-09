@@ -10,10 +10,15 @@ import comic.Comic;
  * 
  * @author charlie
  */
-public class SortByAuthor implements ComicSorter{
+public class SortByPublisher implements ComicSorter{
     @Override
     public void doSort(List<Comic> comicList, boolean reverse){
         
-        //Collections.sort(comicList, Comparator.comparing(Comic::));
+        if(reverse==false){
+            Collections.sort(comicList, Comparator.comparing(Comic::getPublisher));
+        }
+        else{
+            Collections.sort(comicList, Comparator.comparing(Comic::getPublisher).reversed());
+        }
     }
 }
