@@ -25,7 +25,7 @@ public class SearchSortTest {
     public void test1(){
         //searching for term "Title" which should return entire test data list
         try{
-            searcher = new ComicSearcher(new ComicsJsonDAO("testData.json"));
+            searcher = new ComicSearcher(new ComicsJsonDAO("db/testData.json"));
             ComicSearchResult result = searcher.makeSearch("Title");
             assertEquals(5, result.resultList.size());
         } catch(Exception e) {
@@ -35,6 +35,6 @@ public class SearchSortTest {
 
     @Test
     public void testFileExists(){
-        assertTrue(new File("/tests/testData.json").exists());
+        assertTrue(new File("db/testData.json").exists());
     }
 }

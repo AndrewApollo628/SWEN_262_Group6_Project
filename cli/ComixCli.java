@@ -2,6 +2,9 @@ package cli;
 
 import api.ComixProxy;
 import cli.clicmds.ICliCmd;
+import persistence.ComicsJsonDAO;
+import search.ComicSearchResult;
+import search.ComicSearcher;
 
 import java.util.Scanner;
 
@@ -16,6 +19,10 @@ public class ComixCli {
     }
 
     public static void handle(String[] commands) throws Exception {
+
+        ComicSearcher searcher = new ComicSearcher(new ComicsJsonDAO("db/testData.json"));
+        ComicSearchResult res = searcher.makeSearch("Title");
+        System.out.println(res.resultList.size());
 
         // handle empty or exit command
         if (commands.length == 0) { return; }
