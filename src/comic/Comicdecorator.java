@@ -22,7 +22,6 @@ public abstract class Comicdecorator implements Comic{
                         @JsonProperty("Issue") int issue, 
                         @JsonProperty("publicationDate") String publicationDate, 
                         @JsonProperty("creators") List<String> creators, 
-                        @JsonProperty("principleCharacters") List<String> principleCharacters, 
                         @JsonProperty("description") String description, 
                         @JsonProperty("value") int value, 
                         @JsonProperty("Series")  String series)
@@ -73,11 +72,6 @@ public abstract class Comicdecorator implements Comic{
     public List<String> getCreators() {
         return creators;
     }
-
-    // @Override
-    // public List<String> getPrincipleCharacters() {
-    //     return principleCharacters;
-    // }
 
     @Override
     public String getDescription() {

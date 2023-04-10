@@ -22,8 +22,6 @@ public interface Comic {
 
     public List<String> getCreators();
 
-    //public List<String> getPrincipleCharacters();
-
     public String getDescription();
 
     //public int getValue();
