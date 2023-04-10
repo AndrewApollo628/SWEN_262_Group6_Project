@@ -12,7 +12,7 @@ public class ComicSearcher {
         this.dao = dao;
     }
 
-    public SearchResult makeSearch(String searchTerm) throws IOException{
+    public ComicSearchResult makeSearch(String searchTerm) throws IOException{
         List<Comic> searchResultList = new ArrayList<Comic>();
         List<Comic> comicList = dao.getComics();
         for (Comic comic : comicList) {
@@ -23,7 +23,7 @@ public class ComicSearcher {
                     comicList.add(comic);
                 }
             }
-        return new SearchResult(searchResultList);
+        return new ComicSearchResult(searchResultList);
     }
 
     private boolean checkInCreators(Comic c, String searchTerm){

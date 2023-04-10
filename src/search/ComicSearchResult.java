@@ -6,20 +6,21 @@ import comic.Comic;
 import filter.ComicSorter;
 import filter.SortByTitle;
 
-public class SearchResult {
+public class ComicSearchResult {
     public List<Comic> resultList;
     public ComicSorter sortMethod;
 
-    public SearchResult(List<Comic> resultList){
+    public ComicSearchResult(List<Comic> resultList){
         this.resultList = resultList;
         this.sortMethod = new SortByTitle();
+        executeSort(false);
     }
 
     public void setSort(ComicSorter sortMethod){
         this.sortMethod = sortMethod;
     }
 
-    public void executeSort(){
+    public void executeSort(boolean reverse){
         sortMethod.doSort(resultList, false);
     }
 }

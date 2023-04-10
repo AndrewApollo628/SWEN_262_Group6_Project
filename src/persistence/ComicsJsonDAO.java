@@ -27,6 +27,7 @@ public class ComicsJsonDAO implements ComicsDAO {
             load();
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e);
         }
     }
 
