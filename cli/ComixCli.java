@@ -6,6 +6,7 @@ import persistence.ComicsJsonDAO;
 import search.ComicSearchResult;
 import search.ComicSearcher;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ComixCli {
@@ -19,10 +20,6 @@ public class ComixCli {
     }
 
     public static void handle(String[] commands) throws Exception {
-
-        ComicSearcher searcher = new ComicSearcher(new ComicsJsonDAO("db/testData.json"));
-        ComicSearchResult res = searcher.makeSearch("Title");
-        System.out.println(res.resultList.size());
 
         // handle empty or exit command
         if (commands.length == 0) { return; }
@@ -39,7 +36,8 @@ public class ComixCli {
         throw new IllegalArgumentException("Unknown command \"" + commands[0] + "\"\n");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        
         System.out.println("COMIX CLI v0.1 ( help, exit... )");
         
         while (true) {
