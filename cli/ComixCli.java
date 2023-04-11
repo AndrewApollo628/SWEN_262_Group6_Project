@@ -2,7 +2,11 @@ package cli;
 
 import api.ComixProxy;
 import cli.clicmds.ICliCmd;
+import persistence.ComicsJsonDAO;
+import search.ComicSearchResult;
+import search.ComicSearcher;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ComixCli {
@@ -32,7 +36,8 @@ public class ComixCli {
         throw new IllegalArgumentException("Unknown command \"" + commands[0] + "\"\n");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        
         System.out.println("COMIX CLI v0.1 ( help, exit... )");
         
         while (true) {
