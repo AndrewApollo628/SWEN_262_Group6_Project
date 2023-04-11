@@ -5,9 +5,9 @@ import comic.Comic;
 public class AddComic implements CollectionCommand{
 
     private Collection collection;
-    private testComic comic;
+    private Comic comic;
 
-    public AddComic(testComic comic, Collection collection){
+    public AddComic(Comic comic, Collection collection){
         this.comic = comic;
         this.collection = collection;
     }

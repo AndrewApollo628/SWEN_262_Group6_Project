@@ -4,10 +4,10 @@ import comic.Comic;
 
 public class RemoveComic implements CollectionCommand{
 
-    private testComic comic;
+    private Comic comic;
     private Collection collection;
 
-    public RemoveComic(testComic comic, Collection collection){
+    public RemoveComic(Comic comic, Collection collection){
         this.comic = comic;
         this.collection = collection;
     }
