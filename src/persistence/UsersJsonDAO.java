@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import collection.*;
 import comic.Comic;
 import user.User;
 
@@ -19,10 +20,13 @@ public class UsersJsonDAO implements UsersDAO {
     private ArrayList<User> users;
     private ObjectMapper mapper;
 
+    private CollectionCommandExecutor collectionExecutor;
+
     public UsersJsonDAO(String filename) {
         this.filename = filename;
         this.users = new ArrayList<User>();
         this.mapper = new ObjectMapper();
+        this.collectionExecutor = new CollectionCommandExecutor();
         try {
             load();
         } catch (Exception e) {
@@ -64,7 +68,7 @@ public class UsersJsonDAO implements UsersDAO {
     public ArrayList<Comic> getCollection(String username) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return user.getCollection();
+                return user.getCollection().getContents();
             }
         }
         return null;
@@ -74,7 +78,8 @@ public class UsersJsonDAO implements UsersDAO {
     public Boolean addToCollection(String username, Comic comic) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                user.getCollection().add(comic);
+                CollectionCommand addComic = new AddComic(comic, user.getCollection());
+                collectionExecutor.executeCommand(addComic);
                 mapper.writeValue(new File(filename), users);
                 return true;
             }
@@ -86,7 +91,8 @@ public class UsersJsonDAO implements UsersDAO {
     public Boolean removeFromCollection(String username, Comic comic) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                user.getCollection().remove(comic);
+                CollectionCommand removeComic = new RemoveComic(comic, user.getCollection());
+                collectionExecutor.executeCommand(removeComic);
                 mapper.writeValue(new File(filename), users);
                 return true;
             }

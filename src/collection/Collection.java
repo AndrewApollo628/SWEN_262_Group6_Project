@@ -19,4 +19,8 @@ public class Collection {
     public void removeComic(Comic comic){
         this.collection.remove(comic);
     }
+
+    public ArrayList<Comic> getContents(){
+        return collection;
+    }
 }

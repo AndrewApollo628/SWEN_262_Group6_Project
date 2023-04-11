@@ -119,4 +119,18 @@ public class ConcreteComic implements Comic {
     public String toString() {
         return String.format("%s by %s, %s", fullTitle, creators, publicationDate);
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this){
+            return true;
+        }
+        if(!(o instanceof Comic)){
+            return false;
+        }
+
+        Comic c = (Comic) o;
+        return fullTitle.equals(c.getFullTitle()) && publisher.equals(c.getPublisher()) && issue == c.getIssue()
+                && publicationDate.equals(c.getPublicationDate()) && description.equals(c.getDescription());
+    }
 }
