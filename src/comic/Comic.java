@@ -1,10 +1,7 @@
 package comic;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import persistence.ComicDeserializer;
 
 /**
@@ -12,9 +9,7 @@ import persistence.ComicDeserializer;
  * 
  * @author Andrew Apollo 
  */
-
-
- @JsonDeserialize(using = ComicDeserializer.class)
+@JsonDeserialize(using = ComicDeserializer.class)
 public interface Comic {
 
     public String getFullTitle();

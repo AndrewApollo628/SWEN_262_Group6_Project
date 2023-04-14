@@ -8,7 +8,6 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import comic.Comic;
-import comic.ConcreteComic;
 
 /**
  * Defines the Data Access Object interface for {@linkplain Comic} data persistence

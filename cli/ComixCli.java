@@ -1,18 +1,12 @@
 package cli;
 
 import api.ComixProxy;
-import cli.clicmds.ICliCmd;
-import persistence.ComicsJsonDAO;
-import search.ComicSearchResult;
-import search.ComicSearcher;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ComixCli {
     static ComixProxy proxy = new ComixProxy();
     private static Scanner scanner = new Scanner(System.in);
-    private static CommandMap cmdMap = new CommandMap(proxy);
+    private static CommandHandler cmdMap = new CommandHandler(proxy);
 
     public static String[] readLine() {
         String line = scanner.nextLine();
@@ -20,20 +14,17 @@ public class ComixCli {
     }
 
     public static void handle(String[] commands) throws Exception {
-
         // handle empty or exit command
         if (commands.length == 0) { return; }
         if (commands[0].equals("exit")) { scanner.close(); System.exit(0); } 
 
         // handle command
-        ICliCmd cmd = cmdMap.get(commands[0]);
-        if (cmd != null) {
-            cmd.execute(commands);
-            return;
+        try {
+            cmdMap.exec(commands);
+        } catch (Exception e) { 
+            // unknown command
+            throw new IllegalArgumentException("Unknown command \"" + commands[0] + "\"\n");
         }
-
-        // unknown command
-        throw new IllegalArgumentException("Unknown command \"" + commands[0] + "\"\n");
     }
 
     public static void main(String[] args) throws Exception {
