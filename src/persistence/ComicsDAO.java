@@ -14,8 +14,4 @@ public interface ComicsDAO {
 
     ArrayList<Comic> getComics() throws IOException;
 
-    Comic getComic(int comicID) throws IOException;
-
-    Comic updateComic(Comic comic) throws IOException;
-
 }

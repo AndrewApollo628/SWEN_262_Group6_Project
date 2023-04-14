@@ -1,21 +1,18 @@
 package comic;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SlabbedComic extends ConcreteComic {
+public class SlabbedComic extends ComicDec {
     
-    @JsonProperty("grade") private boolean Slabbed;
-   
-    public SlabbedComic(boolean Slabbed, Comic comic){
+    public SlabbedComic(Comic comic){
         super(comic);
-        this.Slabbed = Slabbed;
     }
 
-    public void addSlab(boolean slab){
-        this.Slabbed = slab;
+    @Override
+    public String toString() {
+        return "SLABBED" + super.toString();
     }
 
-    public boolean getSlab(){
-        return Slabbed;
-    }
 }
