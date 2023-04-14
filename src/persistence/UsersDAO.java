@@ -20,9 +20,7 @@ public interface UsersDAO {
 
     ArrayList<Comic> getCollection(String username) throws IOException;
 
-    Boolean addToCollection(String username, Comic comic) throws IOException;
-
-    Boolean removeFromCollection(String username, Comic comic) throws IOException;
+    Boolean updateCollection(String username, ArrayList<Comic> collection) throws IOException;
 
     boolean deleteUser(String username) throws IOException;
 

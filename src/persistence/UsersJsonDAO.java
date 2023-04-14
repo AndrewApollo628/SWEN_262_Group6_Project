@@ -71,22 +71,10 @@ public class UsersJsonDAO implements UsersDAO {
     }
 
     @Override
-    public Boolean addToCollection(String username, Comic comic) throws IOException {
+    public Boolean updateCollection(String username, ArrayList<Comic> collection) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                user.getCollection().add(comic);
-                mapper.writeValue(new File(filename), users);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Boolean removeFromCollection(String username, Comic comic) throws IOException {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                user.getCollection().remove(comic);
+                user.setCollection(collection);
                 mapper.writeValue(new File(filename), users);
                 return true;
             }
