@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import collection.*;
 import comic.Comic;
 import user.User;
 
@@ -20,13 +19,10 @@ public class UsersJsonDAO implements UsersDAO {
     private ArrayList<User> users;
     private ObjectMapper mapper;
 
-    private CollectionCommandExecutor collectionExecutor;
-
     public UsersJsonDAO(String filename) {
         this.filename = filename;
         this.users = new ArrayList<User>();
         this.mapper = new ObjectMapper();
-        this.collectionExecutor = new CollectionCommandExecutor();
         try {
             load();
         } catch (Exception e) {
@@ -68,31 +64,17 @@ public class UsersJsonDAO implements UsersDAO {
     public ArrayList<Comic> getCollection(String username) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return user.getCollection().getContents();
+                return user.getCollection();
             }
         }
         return null;
     }
 
     @Override
-    public Boolean addToCollection(String username, Comic comic) throws IOException {
+    public Boolean updateCollection(String username, ArrayList<Comic> collection) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                CollectionCommand addComic = new AddComic(comic, user.getCollection());
-                collectionExecutor.executeCommand(addComic);
-                mapper.writeValue(new File(filename), users);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Boolean removeFromCollection(String username, Comic comic) throws IOException {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                CollectionCommand removeComic = new RemoveComic(comic, user.getCollection());
-                collectionExecutor.executeCommand(removeComic);
+                user.setCollection(collection);
                 mapper.writeValue(new File(filename), users);
                 return true;
             }

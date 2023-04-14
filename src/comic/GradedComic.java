@@ -7,20 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  * @author Andrew Apollo 
  */
-public class GradedComic extends ConcreteComic {
+public class GradedComic extends ComicDec {
     
-    @JsonProperty("grade") private int Grade;
+    @JsonProperty("grade") private int grade;
    
     public GradedComic(int Grade, Comic comic){
         super(comic);
-        this.Grade = Grade;
-    }
-
-    public void addGrade(int Grade){
-        this.Grade = Grade;
+        this.grade = Grade;
     }
 
     public int getGrade(){
-        return Grade;
+        return grade;
     }
+
+    @Override
+    public String toString() {
+        return "GRADED(" + grade + ")"+super.toString();
+    }
+
 }

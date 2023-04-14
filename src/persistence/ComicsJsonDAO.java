@@ -8,7 +8,6 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import comic.Comic;
-import comic.ConcreteComic;
 
 /**
  * Defines the Data Access Object interface for {@linkplain Comic} data persistence
@@ -33,23 +32,13 @@ public class ComicsJsonDAO implements ComicsDAO {
     }
 
     private void load() throws Exception {
-        Comic[] comicArray = mapper.readValue(new File(filename), ConcreteComic[].class);
+        Comic[] comicArray = mapper.readValue(new File(filename), Comic[].class);
         comics = new ArrayList<Comic>(Arrays.asList(comicArray));
     }
 
     @Override
     public ArrayList<Comic> getComics() throws IOException {
         return comics;
-    }
-
-    @Override
-    public Comic getComic(int comicID) throws IOException {
-        return null;
-    }
-
-    @Override
-    public Comic updateComic(Comic comic) throws IOException {
-        return null;
     }
 
     public static void main(String[] args) throws Exception {

@@ -1,5 +1,5 @@
 [
-    {
+      {
         "Series": "Series1",
         "Issue": "1",
         "Full Title": "Title1 vol. 1",
@@ -30,7 +30,8 @@
         "Release Date": "January 3, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creators": "Creator3 | Creator4"
+        "Creators": "Creator3 | Creator4",
+        "slabbed": true
       },
       {
         "Series": "Series4",
@@ -41,6 +42,8 @@
         "Release Date": "January 4, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creators": "Creator4 | Creator5"
+        "Creators": "Creator4 | Creator5",
+        "grade":2,
+        "slabbed": true
       }
 ]
