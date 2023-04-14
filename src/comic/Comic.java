@@ -5,6 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import persistence.ComicDeserializer;
+
 /**
  * Defines the Comic Interface 
  * 
@@ -19,8 +21,6 @@ public interface Comic {
     
     public String getPublisher();
 
-    // public int getVolumeNumber();
-
     public int getIssue();
 
     public String getPublicationDate();
@@ -28,5 +28,7 @@ public interface Comic {
     public List<String> getCreators();
 
     public String getDescription();
+
+    public int getValue();
 
 }

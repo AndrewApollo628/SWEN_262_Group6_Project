@@ -3,7 +3,6 @@ package comic;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class ConcreteComic implements Comic {
     
@@ -16,8 +15,9 @@ public class ConcreteComic implements Comic {
     @JsonProperty("Format") private String format;
     @JsonProperty("Added Date") private String addedDate;
     @JsonProperty("Creators") private List<String> creators;
+    @JsonProperty("Value") private int value;
 
-    public ConcreteComic(@JsonProperty("Series") String series, @JsonProperty("Issue") int issue, @JsonProperty("Full Title") String fullTitle, @JsonProperty("Variant Description") String variantDescription, @JsonProperty("Publisher") String publisher, @JsonProperty("Release Date") String publicationDate, @JsonProperty("Format") String format, @JsonProperty("Added Date") String addedDate, @JsonProperty("Creators") String creators) {
+    public ConcreteComic(@JsonProperty("Series") String series, @JsonProperty("Issue") int issue, @JsonProperty("Full Title") String fullTitle, @JsonProperty("Variant Description") String variantDescription, @JsonProperty("Publisher") String publisher, @JsonProperty("Release Date") String publicationDate, @JsonProperty("Format") String format, @JsonProperty("Added Date") String addedDate, @JsonProperty("Creators") String creators, @JsonProperty("Value") int value) {
             this.series = series;
             this.issue = issue;
             this.fullTitle = fullTitle;
@@ -26,7 +26,8 @@ public class ConcreteComic implements Comic {
             this.publicationDate = publicationDate;
             this.format = format;
             this.addedDate = addedDate;
-            this.creators = List.of(creators.split(" | "));
+            this.creators = List.of(creators.split("\\s\\|\\s"));
+            this.value = value;
     }
 
     @Override
@@ -62,6 +63,11 @@ public class ConcreteComic implements Comic {
     @Override
     public String toString() {
         return String.format("%s by %s, %s", fullTitle, creators, publicationDate);
+    }
+
+    @Override
+    public int getValue() {
+        return 0;
     }
 
 }

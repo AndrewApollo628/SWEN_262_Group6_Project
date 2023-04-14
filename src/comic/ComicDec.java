@@ -41,7 +41,12 @@ public abstract class ComicDec implements Comic {
 
     @Override
     public String toString() {
-        return "<<" + comic + ">>";
+        return "<" + comic + ">";
+    }
+
+    @Override
+    public int getValue() {
+        return comic.getValue();
     }
 
 }
