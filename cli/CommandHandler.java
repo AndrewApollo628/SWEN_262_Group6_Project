@@ -23,9 +23,12 @@ public class CommandHandler {
         // commands.put("exit", new Exit());
     }
 
-    public void exec(String[] cmds) throws IllegalArgumentException {
+    public void exec(String[] cmds) throws Exception {
         String cmd = cmds[0];
         ICliCmd command = commands.get(cmd);
+        if (command == null) {
+            throw new Exception("Unknown command \"" + cmds[0] + "\"\n");
+        }
         if (command instanceof UndoableCmd) {
             undoStack.push(command);
         }

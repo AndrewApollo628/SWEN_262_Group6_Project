@@ -19,12 +19,7 @@ public class ComixCli {
         if (commands[0].equals("exit")) { scanner.close(); System.exit(0); } 
 
         // handle command
-        try {
-            cmdMap.exec(commands);
-        } catch (Exception e) { 
-            // unknown command
-            throw new IllegalArgumentException("Unknown command \"" + commands[0] + "\"\n");
-        }
+        cmdMap.exec(commands);
     }
 
     public static void main(String[] args) throws Exception {

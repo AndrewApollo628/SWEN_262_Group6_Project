@@ -1,5 +1,5 @@
 package cli.clicmds;
 
 public interface ICliCmd {
-    void execute(String[] args);
+    void execute(String[] args) throws Exception;
 }
