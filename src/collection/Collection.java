@@ -12,6 +12,15 @@ public class Collection {
         this.collection = new ArrayList<>();
     }
 
+
+    /**
+     * Alternative constructor for importing a collection
+     * @param collection Arraylist of comics
+     */
+    public Collection(ArrayList<Comic> collection){
+        this.collection = collection;
+    }
+
     public void addComic(Comic comic){
         this.collection.add(comic);
     }
