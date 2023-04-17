@@ -32,4 +32,8 @@ public interface IComix {
 
     void unSlabComic(int comic) throws Exception;
 
+    void signComic(int comic) throws Exception;
+
+    void unSignComic(int comic) throws Exception;
+
 }

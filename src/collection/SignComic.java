@@ -25,4 +25,11 @@ public class SignComic implements CollectionCommand{
         old.addComic(signedComic, position);
         usersDAO.updateCollection(username, old);
     }
+
+    public void undo() throws Exception {
+        Collection old = usersDAO.getCollection(username);
+        old.removeComic(comic);
+        old.addComic(comic, position);
+        usersDAO.updateCollection(username, old);
+    }
 }

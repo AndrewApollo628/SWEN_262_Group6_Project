@@ -20,7 +20,7 @@ public class MyCollection extends UndoableCmd {
     public void execute(String[] args) throws Exception {
 
         if (args.length < 2) {
-            throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >");
+            throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] | sign [comic] >");
         }
 
         argumentStack.push(args);
@@ -76,6 +76,15 @@ public class MyCollection extends UndoableCmd {
             System.out.println("Slabbed comic " + (comic+1));
             return;
         }
+        if (args[1].equals("sign")) {
+            if (args.length < 3) {
+                throw new IllegalArgumentException("Usage: collection sign [comic]");
+            }
+            int comic = Integer.parseInt(args[2]) - 1;
+            api.signComic(comic);
+            System.out.println("Signed comic " + (comic+1));
+            return;
+        }
 
         throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >");
 
@@ -110,6 +119,12 @@ public class MyCollection extends UndoableCmd {
             int comic = Integer.parseInt(lastArg[2]) - 1;
             System.out.println("Undo slabbing comic " + (comic+1));
             api.unSlabComic(comic);
+            return;
+        }
+        if (lastArg[1].equals("sign")) {
+            int comic = Integer.parseInt(lastArg[2]) - 1;
+            System.out.println("Undo signing comic " + (comic+1));
+            api.unSignComic(comic);
             return;
         }
     }
