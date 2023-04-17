@@ -3,6 +3,8 @@ package cli;
 import api.ComixProxy;
 import java.util.Scanner;
 
+import org.mockito.internal.matchers.And;
+
 public class ComixCli {
     static ComixProxy proxy = new ComixProxy();
     private static Scanner scanner = new Scanner(System.in);
@@ -35,6 +37,10 @@ public class ComixCli {
                 e.printStackTrace();
                 scanner.close();
                 System.exit(1);
+            }
+
+            if(commands.length == 1 & commands[0].contains("quit")){
+                return;
             }
 
             try { handle(commands); } 
