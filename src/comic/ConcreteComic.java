@@ -91,9 +91,17 @@ public class ConcreteComic implements Comic {
 
         GradedComic gradedComic = new GradedComic(9, comic);
         System.out.println(gradedComic);
+        System.out.println(gradedComic.isGraded());
 
         SignedComic signedComic = new SignedComic(gradedComic, "aditya"); 
         System.out.println(signedComic);
+        System.out.println(signedComic.isSigned());
+
+        SlabbedComic slabbedComic = new SlabbedComic(signedComic);
+        System.out.println(slabbedComic);
+        System.out.println(slabbedComic.isSlabbed());
+        System.out.println(slabbedComic.isSigned());
+        System.out.println(slabbedComic.isGraded());
     }
 
     public String getSignature() {

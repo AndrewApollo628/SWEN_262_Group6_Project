@@ -19,11 +19,10 @@ public class ComicSerializer extends JsonSerializer<Comic> {
             ComicDec dec = (ComicDec) value;
             if (dec.isGraded()) {
                 gen.writeNumberField("grade", dec.getGrade());
-            } 
+            }
             if (dec.isSlabbed()) {
                 gen.writeBooleanField("slabbed", true);
             }
-
             if (dec.isSigned()) {
                 gen.writeStringField("signature", dec.getSignature());
             } 

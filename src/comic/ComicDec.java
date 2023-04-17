@@ -69,19 +69,19 @@ public abstract class ComicDec implements Comic {
     }
 
     public boolean isGraded() {
-        return comic instanceof GradedComic || (comic instanceof ComicDec && ((ComicDec) comic).isGraded());
+        return this instanceof GradedComic || (comic instanceof ComicDec && ((ComicDec) comic).isGraded());
     }
 
     public boolean isSlabbed() {
-        return comic instanceof SlabbedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSlabbed());
+        return this instanceof SlabbedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSlabbed());
     }
 
     public boolean isSigned() {
-        return comic instanceof SignedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSigned());
+        return this instanceof SignedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSigned());
     }
 
     public int getGrade() {
-        if (comic instanceof GradedComic) {
+        if (this instanceof GradedComic) {
             return ((GradedComic) comic).getGrade();
         } else if (comic instanceof ComicDec) {
             return ((ComicDec) comic).getComic().getGrade();
@@ -91,8 +91,8 @@ public abstract class ComicDec implements Comic {
     }
 
     public String getSignature() {
-        if (comic instanceof SignedComic) {
-            return ((SignedComic) comic).getSignature();
+        if (this instanceof SignedComic) {
+            return ((SignedComic) this).getSignature();
         } else if (comic instanceof ComicDec) {
             return ((ComicDec) comic).getComic().getSignature();
         } else {
