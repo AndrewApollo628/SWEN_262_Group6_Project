@@ -1,38 +1,131 @@
 package api;
 
-public class ComixProxy implements IComix {
-    private ComixAPI api = null;
+import java.io.IOException;
+import java.util.ArrayList;
 
-    public ComixProxy() {
-        System.out.println("  - loaded COMIX Proxy v0.1");
-    }
+import comic.Comic;
+import persistence.ComicsJsonDAO;
+
+public class ComixProxy implements IComix {
+    private ComixAPI api = new ComixAPI();
+    private boolean loggedIn = false;
 
     public String getCurrentUser() {
-        if (api == null) { return null; }
+        if (!loggedIn) { return null; }
         else { return api.getCurrentUser(); }
     }
 
     public boolean login(String username, String password) {
-        api = new ComixAPI(); // only create the API if we need it
-        boolean resp = api.login(username, password);
-        if (!resp) { api = null; System.out.println("  - unloaded COMIX API"); }
-        return resp;
+        loggedIn = api.login(username, password);
+        return loggedIn;
     }
 
     public void logout() {
-        if (api != null) {
+        if (!loggedIn) {
             api.logout();
-            api = null;
+            loggedIn=false;
             System.out.println("  - unloaded COMIX API");
         }
     }
 
     // TODO: Add more methods, and remove this one
     public String doSomething() {
-        if (api == null) {
+        if (loggedIn) {
             return null;
         } else {
             return api.doSomething();
+        }
+    }
+
+    @Override
+    public ArrayList<Comic> getUserCollection() throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in\n");
+        } else {
+            return api.getUserCollection();
+        }
+    }
+
+    @Override
+    public void addToCollection(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.addToCollection(comic);
+        }
+    }
+
+    @Override
+    public void addToCollection(Comic comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.addToCollection(comic);
+        }
+    }
+
+    @Override
+    public Comic removeFromCollection(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            return api.removeFromCollection(comic);
+        }
+    }
+
+    @Override
+    public String getComic(String comic) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getComic'");
+    }
+
+    @Override
+    public ArrayList<Comic> searchComic(String query, String filter, String sort) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
+    }
+
+    @Override
+    public ArrayList<Comic> getAllComics() throws IOException {
+        if (!loggedIn) {
+            System.out.println("<<GUEST MODE>>");
+        }
+        return api.getAllComics();
+    }
+
+    @Override
+    public void gradeComic(int comic, int grade) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.gradeComic(comic, grade);
+        }
+    }
+
+    @Override
+    public void slabComic(int comic)  throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.slabComic(comic);
+        }
+    }
+
+    @Override
+    public void unGradeComic(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.unGradeComic(comic);
+        }
+    }
+
+    @Override
+    public void unSlabComic(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.unSlabComic(comic);
         }
     }
 

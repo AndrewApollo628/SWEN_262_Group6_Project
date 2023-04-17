@@ -1,19 +1,19 @@
 package user;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import collection.Collection;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import comic.Comic;
-import persistence.UsersJsonDAO;
 
 /**
  * Defines the User class
  * 
  * @author aditya
  */
+
+ @JsonSerialize(using = persistence.UserSerializer.class)
 public class User {
 
     @JsonProperty("username") private String username;

@@ -1,6 +1,7 @@
 package collection;
 
+import java.io.IOException;
 
 public interface CollectionCommand {
-    void execute();
+    void execute() throws IOException;
 }

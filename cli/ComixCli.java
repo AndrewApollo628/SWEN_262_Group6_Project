@@ -39,7 +39,7 @@ public class ComixCli {
 
             try { handle(commands); } 
             catch (Exception e) {
-                ColorWriter.out(e.getMessage(), ColorWriter.ANSI_RED+ColorWriter.ANSI_BLINK);
+                ColorWriter.out(e.getMessage()+"\n", ColorWriter.ANSI_RED+ColorWriter.ANSI_BLINK);
             }
         }
     }

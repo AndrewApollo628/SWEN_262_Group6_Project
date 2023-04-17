@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import collection.Collection;
-import comic.Comic;
 import user.User;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,10 +61,10 @@ public class UsersJsonDAO implements UsersDAO {
     }
 
     @Override
-    public ArrayList<Comic> getCollection(String username) throws IOException {
+    public Collection getCollection(String username) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return user.getCollection().getContents();
+                return user.getCollection();
             }
         }
         return null;
@@ -103,11 +102,6 @@ public class UsersJsonDAO implements UsersDAO {
             }
         }
         return false;
-    }
-    
-    public static void main(String[] args) throws Exception {
-        UsersDAO usersDAO = new UsersJsonDAO("db/users.json");
-        System.out.println(usersDAO.getUsers());
     }
     
 }
