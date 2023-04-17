@@ -38,11 +38,6 @@ public class ComixCli {
                 scanner.close();
                 System.exit(1);
             }
-
-            if(commands.length == 1 & commands[0].contains("quit")){
-                return;
-            }
-
             try { handle(commands); } 
             catch (Exception e) {
                 ColorWriter.out(e.getMessage()+"\n", ColorWriter.ANSI_RED+ColorWriter.ANSI_BLINK);
