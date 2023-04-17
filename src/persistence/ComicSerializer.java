@@ -24,7 +24,7 @@ public class ComicSerializer extends JsonSerializer<Comic> {
                 gen.writeBooleanField("slabbed", true);
             }
             if (dec.isSigned()) {
-                gen.writeStringField("signature", dec.getSignature());
+                gen.writeStringField("signed", dec.getSignature());
             } 
 
         } 
