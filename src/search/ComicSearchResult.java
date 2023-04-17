@@ -23,4 +23,5 @@ public class ComicSearchResult {
     public void executeSort(boolean reverse){
         sortMethod.doSort(resultList, false);
     }
+
 }

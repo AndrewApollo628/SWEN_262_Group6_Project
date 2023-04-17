@@ -1,6 +1,8 @@
 package api;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import comic.Comic;
 
@@ -20,8 +22,7 @@ public interface IComix {
 
     Comic removeFromCollection(int comic) throws Exception;
 
-    ArrayList<Comic> searchComic(String context, String query, String filter);
-
+    List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException;
     ArrayList<Comic> getAllComics() throws Exception;
 
     void gradeComic(int comic, int grade) throws Exception;

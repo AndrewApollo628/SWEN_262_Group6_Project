@@ -2,6 +2,7 @@ package api;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import comic.Comic;
 
@@ -64,11 +65,12 @@ public class ComixProxy implements IComix {
     }
 
     @Override
-    public ArrayList<Comic> searchComic(String context, String query, String filter) {
-        // context specifies wether collection or whole database is searched
-        // change other params and types as needed
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
+    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException {
+        if(Context.toLowerCase().equals("collection") && !loggedIn){
+            throw new UnsupportedOperationException("Your Not Logged In");
+        }
+        return api.searchComic(query, Context, sort, reverse);
+        
     }
 
     @Override
