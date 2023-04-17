@@ -27,6 +27,10 @@ public class Collection {
         this.collection.add(comic);
     }
 
+    public void addComic(Comic comic, int position) {
+        this.collection.add(position, comic);
+    }
+
     public void removeComic(Comic comic){
         this.collection.remove(comic);
     }

@@ -1,22 +1,39 @@
 package collection;
 
+import java.io.IOException;
+
 import comic.Comic;
 import comic.SlabbedComic;
+import persistence.UsersDAO;
 
-public class SlabComic implements CollectionCommand{
+public class SlabComic implements CollectionCommand {
 
-    private Collection collection;
+    private UsersDAO usersDAO;
+    private String username;
     private Comic comic;
+    private int index;
 
-    public SlabComic(Collection collection, Comic comic){
-        this.collection = collection;
+    public SlabComic(Comic comic, UsersDAO userDAO, String username, int index) {
         this.comic = comic;
+        this.usersDAO = userDAO;
+        this.username = username;
+        this.index = index;
     }
 
     @Override
-    public void execute() {
-        Comic slabbed = new SlabbedComic(this.comic);
-        this.collection.removeComic(this.comic);
-        this.collection.addComic(slabbed);
+    public void execute() throws IOException {
+        Collection old = usersDAO.getCollection(username);
+        old.removeComic(comic);
+        old.addComic(new SlabbedComic(comic),index);
+        usersDAO.updateCollection(username, old);
     }
+    
+    public void undo() throws IOException {
+        Collection old = usersDAO.getCollection(username);
+        old.removeComic(comic);
+        old.addComic(((comic.ComicDec)comic).getComic(), index);
+        usersDAO.updateCollection(username, old);
+    }
+
 }
+

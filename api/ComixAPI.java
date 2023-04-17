@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import collection.AddComic;
+import collection.GradeComic;
 import collection.RemoveComic;
+import collection.SlabComic;
 import comic.Comic;
 import persistence.ComicsDAO;
 import persistence.ComicsJsonDAO;
@@ -85,5 +87,34 @@ public class ComixAPI implements IComix {
     public ArrayList<Comic> searchComic(String query, String filter, String sort) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
+    }
+
+    @Override
+    public void gradeComic(int comic, int grade) throws Exception {
+        Comic comicToGrade = usersDAO.getCollection(currentUser).getContents().get(comic);
+        GradeComic gradeComic = new GradeComic(comicToGrade, usersDAO, currentUser, grade, comic);
+        gradeComic.execute();
+    }
+
+    @Override
+    public void slabComic(int comic) throws Exception {
+        Comic comicToSlab = usersDAO.getCollection(currentUser).getContents().get(comic);
+        SlabComic slabComic = new SlabComic(comicToSlab, usersDAO, currentUser, comic);
+        slabComic.execute();
+
+    }
+
+    @Override
+    public void unGradeComic(int comic) throws Exception {
+        Comic comicToUnGrade = usersDAO.getCollection(currentUser).getContents().get(comic);
+        GradeComic unGradeComic = new GradeComic(comicToUnGrade, usersDAO, currentUser, 0, comic);
+        unGradeComic.undo();
+    }
+
+    @Override
+    public void unSlabComic(int comic) throws Exception {
+        Comic comicToUnSlab = usersDAO.getCollection(currentUser).getContents().get(comic);
+        SlabComic unSlabComic = new SlabComic(comicToUnSlab, usersDAO, currentUser, comic);
+        unSlabComic.undo();
     }
 }

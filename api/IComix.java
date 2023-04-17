@@ -28,4 +28,13 @@ public interface IComix {
     ArrayList<Comic> searchComic(String query, String filter, String sort);
 
     ArrayList<Comic> getAllComics() throws Exception;
+
+    void gradeComic(int comic, int grade) throws Exception;
+
+    void slabComic(int comic) throws Exception;
+
+    void unGradeComic(int comic) throws Exception;
+
+    void unSlabComic(int comic) throws Exception;
+
 }

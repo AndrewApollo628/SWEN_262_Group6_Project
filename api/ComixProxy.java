@@ -93,4 +93,40 @@ public class ComixProxy implements IComix {
         return api.getAllComics();
     }
 
+    @Override
+    public void gradeComic(int comic, int grade) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.gradeComic(comic, grade);
+        }
+    }
+
+    @Override
+    public void slabComic(int comic)  throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.slabComic(comic);
+        }
+    }
+
+    @Override
+    public void unGradeComic(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.unGradeComic(comic);
+        }
+    }
+
+    @Override
+    public void unSlabComic(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.unSlabComic(comic);
+        }
+    }
+
 }

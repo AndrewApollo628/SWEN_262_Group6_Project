@@ -57,6 +57,27 @@ public class MyCollection extends UndoableCmd {
             System.out.println("Removed comic " + (comic+1) + " from collection");
             return;
         }
+        if (args[1].equals("grade")) {
+            if (args.length < 4) {
+                throw new IllegalArgumentException("Usage: collection grade [comic] [grade]");
+            }
+            int comic = Integer.parseInt(args[2]) - 1;
+            int grade = Integer.parseInt(args[3]);
+            api.gradeComic(comic, grade);
+            System.out.println("Graded comic " + (comic+1) + " with grade " + grade);
+            return;
+        }
+        if (args[1].equals("slab")) {
+            if (args.length < 3) {
+                throw new IllegalArgumentException("Usage: collection slab [comic]");
+            }
+            int comic = Integer.parseInt(args[2]) - 1;
+            api.slabComic(comic);
+            System.out.println("Slabbed comic " + (comic+1));
+            return;
+        }
+
+        throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >");
 
     }
 
@@ -76,6 +97,19 @@ public class MyCollection extends UndoableCmd {
             Comic comic = deletedComicStack.pop();
             System.out.println("Undo removing comic from collection");
             api.addToCollection(comic);
+            return;
+        }
+        if (lastArg[1].equals("grade")) {
+            int comic = Integer.parseInt(lastArg[2]) - 1;
+            int grade = Integer.parseInt(lastArg[3]);
+            System.out.println("Undo grading comic " + (comic+1) + " with grade " + grade);
+            api.gradeComic(comic, 0);
+            return;
+        }
+        if (lastArg[1].equals("slab")) {
+            int comic = Integer.parseInt(lastArg[2]) - 1;
+            System.out.println("Undo slabbing comic " + (comic+1));
+            api.unSlabComic(comic);
             return;
         }
     }
