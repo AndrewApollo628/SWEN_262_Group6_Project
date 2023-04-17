@@ -31,6 +31,18 @@ public class ComicsJsonDAO implements ComicsDAO {
         }
     }
 
+    public ComicsJsonDAO(String filename, ObjectMapper mapper) {
+        this.filename = filename;
+        this.comics = new ArrayList<Comic>();
+        this.mapper = mapper;
+        try {
+            load();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+
     private void load() throws Exception {
         Comic[] comicArray = mapper.readValue(new File(filename), Comic[].class);
         comics = new ArrayList<Comic>(Arrays.asList(comicArray));
