@@ -3,8 +3,6 @@ package cli;
 import api.ComixProxy;
 import java.util.Scanner;
 
-import org.mockito.internal.matchers.And;
-
 public class ComixCli {
     static ComixProxy proxy = new ComixProxy();
     private static Scanner scanner = new Scanner(System.in);
