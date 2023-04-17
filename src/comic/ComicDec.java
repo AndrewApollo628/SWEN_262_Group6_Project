@@ -49,4 +49,8 @@ public abstract class ComicDec implements Comic {
         return comic.getValue();
     }
 
+    public Comic getComic() {
+        return comic;
+    }
+
 }

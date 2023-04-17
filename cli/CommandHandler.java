@@ -20,6 +20,7 @@ public class CommandHandler {
         commands.put(Example.COMMAND, new Example(api));
         commands.put(ExampleUndoable.COMMAND, new ExampleUndoable(api));
         commands.put(Undo.COMMAND, new Undo(this));
+        commands.put(GetComics.COMMAND, new GetComics(api));
         // commands.put("exit", new Exit());
     }
 
