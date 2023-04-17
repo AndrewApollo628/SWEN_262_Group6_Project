@@ -40,11 +40,7 @@ public class ComixAPI implements IComix {
     }
 
     public void logout() { currentUser = null; }
-    
-    // TODO: Add more methods, and remove this one
-    public String doSomething() {
-        return "The API just did something";
-    }
+
 
     @Override
     public ArrayList<Comic> getAllComics() throws IOException {

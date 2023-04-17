@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import comic.Comic;
-import persistence.ComicsJsonDAO;
 
 public class ComixProxy implements IComix {
     private ComixAPI api = new ComixAPI();
@@ -25,15 +24,6 @@ public class ComixProxy implements IComix {
             api.logout();
             loggedIn=false;
             System.out.println("  - unloaded COMIX API");
-        }
-    }
-
-    // TODO: Add more methods, and remove this one
-    public String doSomething() {
-        if (loggedIn) {
-            return null;
-        } else {
-            return api.doSomething();
         }
     }
 
