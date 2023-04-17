@@ -8,7 +8,7 @@
         "Release Date": "January 1, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creators": "Creator1 | Creator2"
+        "Creator": "Creator1 | Creator2"
       },
       {
         "Series": "Series2",
@@ -19,7 +19,7 @@
         "Release Date": "January 2, 2001",
         "Format": "Comic",
         "Added Date": "January 2, 2001",
-        "Creators": "Creator2 | Creator3"
+        "Creator": "Creator2 | Creator3"
       },
       {
         "Series": "Series3",
@@ -30,7 +30,7 @@
         "Release Date": "January 3, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creators": "Creator3 | Creator4",
+        "Creator": "Creator3 | Creator4",
         "slabbed": true
       },
       {
@@ -42,7 +42,7 @@
         "Release Date": "January 4, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creators": "Creator4 | Creator5",
+        "Creator": "Creator4 | Creator5",
         "grade":2,
         "slabbed": true
       }

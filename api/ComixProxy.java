@@ -40,22 +40,37 @@ public class ComixProxy implements IComix {
     @Override
     public ArrayList<Comic> getUserCollection() throws Exception {
         if (!loggedIn) {
-            throw new Exception("User not logged in\n");
+            throw new UnsupportedOperationException("User not logged in\n");
         } else {
             return api.getUserCollection();
         }
     }
 
     @Override
-    public String addToCollection(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addToCollection'");
+    public void addToCollection(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.addToCollection(comic);
+        }
     }
 
     @Override
-    public String removeFromCollection(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFromCollection'");
+    public void addToCollection(Comic comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            api.addToCollection(comic);
+        }
+    }
+
+    @Override
+    public Comic removeFromCollection(int comic) throws Exception {
+        if (!loggedIn) {
+            throw new UnsupportedOperationException("User not logged in");
+        } else {
+            return api.removeFromCollection(comic);
+        }
     }
 
     @Override

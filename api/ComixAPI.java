@@ -4,6 +4,8 @@ package api;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import collection.AddComic;
+import collection.RemoveComic;
 import comic.Comic;
 import persistence.ComicsDAO;
 import persistence.ComicsJsonDAO;
@@ -49,19 +51,28 @@ public class ComixAPI implements IComix {
 
     @Override
     public ArrayList<Comic> getUserCollection() throws Exception {
-        return usersDAO.getCollection(currentUser);
+        return usersDAO.getCollection(currentUser).getContents();
     }
 
     @Override
-    public String addToCollection(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addToCollection'");
+    public void addToCollection(int comic) throws Exception {
+        Comic comicToAdd = comicsDAO.getComics().get(comic);
+        AddComic addComic = new AddComic(comicToAdd, usersDAO, currentUser);
+        addComic.execute();
     }
 
     @Override
-    public String removeFromCollection(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFromCollection'");
+    public void addToCollection(Comic comic) throws Exception {
+        AddComic addComic = new AddComic(comic, usersDAO, currentUser);
+        addComic.execute();
+    }
+
+    @Override
+    public Comic removeFromCollection(int comic) throws Exception {
+        Comic comicToRemove = usersDAO.getCollection(currentUser).getContents().get(comic);
+        RemoveComic removeComic = new RemoveComic(comicToRemove, usersDAO, currentUser);
+        removeComic.execute();
+        return comicToRemove;
     }
 
     @Override

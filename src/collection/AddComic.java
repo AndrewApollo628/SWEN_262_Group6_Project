@@ -1,19 +1,26 @@
 package collection;
 
+import java.io.IOException;
+
 import comic.Comic;
+import persistence.UsersDAO;
 
 public class AddComic implements CollectionCommand{
 
-    private Collection collection;
+    private UsersDAO usersDAO;
+    private String username;
     private Comic comic;
 
-    public AddComic(Comic comic, Collection collection){
+    public AddComic(Comic comic, UsersDAO userDAO, String username){
         this.comic = comic;
-        this.collection = collection;
+        this.usersDAO = userDAO;
+        this.username = username;
     }
 
     @Override
-    public void execute(){
-        this.collection.addComic(this.comic);
+    public void execute() throws IOException{
+        Collection old = usersDAO.getCollection(username);
+        old.addComic(comic);
+        usersDAO.updateCollection(username, old);
     }
 }

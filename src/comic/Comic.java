@@ -2,7 +2,10 @@ package comic;
 
 import java.util.List;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import persistence.ComicDeserializer;
+import persistence.ComicSerializer;
 
 /**
  * Defines the Comic Interface 
@@ -10,6 +13,7 @@ import persistence.ComicDeserializer;
  * @author Andrew Apollo 
  */
 @JsonDeserialize(using = ComicDeserializer.class)
+@JsonSerialize(using = ComicSerializer.class)
 public interface Comic {
 
     public String getFullTitle();
@@ -22,8 +26,16 @@ public interface Comic {
 
     public List<String> getCreators();
 
-    public String getDescription();
-
     public int getValue();
+
+    public String getSeries();
+
+    public String getVariantDescription();
+
+    public String getFormat();
+
+    public String getAddedDate();
+
+    public String getCreator();
 
 }

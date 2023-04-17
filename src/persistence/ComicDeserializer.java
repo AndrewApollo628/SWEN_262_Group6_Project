@@ -42,7 +42,7 @@ public class ComicDeserializer extends JsonDeserializer<Comic> {
 			node.get("Release Date").asText(), 
 			node.get("Format").asText(), 
 			node.get("Added Date").asText(), 
-			node.get("Creators").asText(),
+			node.get("Creator").asText(),
 			ComicValue
 		);
 

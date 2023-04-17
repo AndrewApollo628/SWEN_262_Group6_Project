@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import collection.Collection;
-import comic.Comic;
 import user.User;
 
 /**
@@ -19,7 +18,7 @@ public interface UsersDAO {
 
     User createUser(User user) throws IOException;
 
-    ArrayList<Comic> getCollection(String username) throws IOException;
+    Collection getCollection(String username) throws IOException;
 
     Boolean updateCollection(String username, Collection collection) throws IOException;
 

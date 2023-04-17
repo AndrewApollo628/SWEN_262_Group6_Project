@@ -1,9 +1,12 @@
 package cli.clicmds;
+import java.util.Stack;
 
 public abstract class UndoableCmd implements ICliCmd {
 
-    public abstract void execute(String[] args);
+    protected Stack<String[]> argumentStack = new Stack<String[]>();
 
-    public abstract void undo();
+    public abstract void execute(String[] args) throws Exception;
+
+    public abstract void undo() throws Exception;
     
 }

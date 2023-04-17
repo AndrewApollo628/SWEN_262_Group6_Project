@@ -17,7 +17,7 @@ public class ComicSearcher {
         List<Comic> comicList = dao.getComics();
         for (Comic comic : comicList) {
             if(comic.getFullTitle().contains(searchTerm)
-                || comic.getDescription().contains(searchTerm)
+                || comic.getVariantDescription().contains(searchTerm)
                 || checkInCreators(comic, searchTerm)
                 ){
                     comicList.add(comic);

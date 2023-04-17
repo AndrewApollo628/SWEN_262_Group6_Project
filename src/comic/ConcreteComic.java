@@ -56,11 +56,6 @@ public class ConcreteComic implements Comic {
     }
 
     @Override
-    public String getDescription() {
-        return variantDescription;
-    }
-
-    @Override
     public String toString() {
         return String.format("%s by %s, %s", fullTitle, creators, publicationDate);
     }
@@ -69,5 +64,31 @@ public class ConcreteComic implements Comic {
     public int getValue() {
         return 0;
     }
+
+    @Override
+    public String getVariantDescription() {
+        return variantDescription;
+    }
+
+    @Override
+    public String getSeries() {
+        return series;
+    }
+
+    @Override
+    public String getFormat() {
+        return format;
+    }
+
+    @Override
+    public String getAddedDate() {
+        return addedDate;
+    }
+
+    @Override
+    public String getCreator() {
+        return creators.get(0);
+    }
+
 
 }

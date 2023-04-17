@@ -17,9 +17,11 @@ public interface IComix {
 
     ArrayList<Comic> getUserCollection() throws Exception;
 
-    String addToCollection(String comic);
+    void addToCollection(int comic) throws Exception;
 
-    String removeFromCollection(String comic);
+    void addToCollection(Comic comic) throws Exception;
+
+    Comic removeFromCollection(int comic) throws Exception;
 
     String getComic(String comic);
 
