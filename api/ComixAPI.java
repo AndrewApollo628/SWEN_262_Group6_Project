@@ -8,6 +8,7 @@ import java.util.List;
 import collection.AddComic;
 import collection.GradeComic;
 import collection.RemoveComic;
+import collection.SignComic;
 import collection.SlabComic;
 import comic.Comic;
 import filter.ComicSorter;
@@ -148,4 +149,19 @@ public class ComixAPI implements IComix {
         SlabComic unSlabComic = new SlabComic(comicToUnSlab, usersDAO, currentUser, comic);
         unSlabComic.undo();
     }
+
+    @Override
+    public void signComic(int comic) throws Exception {
+        Comic comicToSign = usersDAO.getCollection(currentUser).getContents().get(comic);
+        SignComic signComic = new SignComic(comicToSign, usersDAO, currentUser, comic);
+        signComic.execute();
+    }
+
+    @Override
+    public void unSignComic(int comic) throws Exception {
+        Comic comicToUnSign = usersDAO.getCollection(currentUser).getContents().get(comic);
+        SignComic unSignComic = new SignComic(comicToUnSign, usersDAO, currentUser, comic);
+        unSignComic.undo();
+    }
+
 }

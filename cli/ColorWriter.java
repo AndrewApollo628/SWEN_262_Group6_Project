@@ -1,7 +1,6 @@
 package cli;
 
-import comic.Comic;
-import comic.GradedComic;
+import comic.*;
 
 public class ColorWriter {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -25,16 +24,18 @@ public class ColorWriter {
 
     public static void printComic(Comic comic) {
         if (comic instanceof comic.ComicDec) {
-            if (comic instanceof comic.SlabbedComic || ((comic.ComicDec) comic).getComic() instanceof comic.SlabbedComic) {
+            ComicDec comicDec = (comic.ComicDec) comic;
+
+            if (comicDec.isSlabbed()) {
                 ColorWriter.out("[SLABBED] ", ColorWriter.ANSI_YELLOW);
             }
 
-            if (comic instanceof comic.GradedComic) {
-                ColorWriter.out("Grade " + ((comic.GradedComic) comic).getGrade() + " ", ColorWriter.ANSI_YELLOW);
+            if (comicDec.isGraded()) {
+                ColorWriter.out("Grade " + comic.getGrade() + " ", ColorWriter.ANSI_YELLOW);
             }
 
-            if (((comic.ComicDec) comic).getComic() instanceof GradedComic) {
-                ColorWriter.out("Grade " + ((GradedComic) ((comic.ComicDec) comic).getComic()).getGrade() + " ", ColorWriter.ANSI_YELLOW);
+            if (comicDec.isSigned()) {
+                ColorWriter.out("[SIGNED] ", ColorWriter.ANSI_GREEN);
             }
             
         }

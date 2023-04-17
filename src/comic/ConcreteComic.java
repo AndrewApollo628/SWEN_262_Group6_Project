@@ -85,4 +85,30 @@ public class ConcreteComic implements Comic {
         return addedDate;
     }
 
+    public static void main(String[] args) {
+        ConcreteComic comic = new ConcreteComic("Batman", 1, "Batman #1", "Variant", "DC", "2019-01-01", "Comic", "2019-01-01", "Bob Kane", 100);
+        System.out.println(comic);
+
+        GradedComic gradedComic = new GradedComic(9, comic);
+        System.out.println(gradedComic);
+        System.out.println(gradedComic.isGraded());
+
+        SignedComic signedComic = new SignedComic(gradedComic, "aditya"); 
+        System.out.println(signedComic);
+        System.out.println(signedComic.isSigned());
+
+        SlabbedComic slabbedComic = new SlabbedComic(signedComic);
+        System.out.println(slabbedComic);
+        System.out.println(slabbedComic.isSlabbed());
+        System.out.println(slabbedComic.isSigned());
+        System.out.println(slabbedComic.isGraded());
+    }
+
+    public String getSignature() {
+        return null;
+    }
+
+    public int getGrade() {
+        return 0;
+    }
 }

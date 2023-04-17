@@ -15,6 +15,7 @@ public class UserSerializer extends JsonSerializer<User> {
     @Override
     public void serialize(User value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         
+        gen = gen.useDefaultPrettyPrinter();
         gen.writeStartObject();
         gen.writeStringField("username", value.getUsername());
         gen.writeStringField("password", value.getPassword());

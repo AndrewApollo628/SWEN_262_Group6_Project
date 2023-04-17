@@ -2,21 +2,34 @@ package collection;
 
 import comic.Comic;
 import comic.SignedComic;
+import persistence.UsersDAO;
 
 public class SignComic implements CollectionCommand{
 
-    private Collection collection;
+    private UsersDAO usersDAO;
+    private String username;
     private Comic comic;
+    private int position;
 
-    public SignComic(Collection collection, Comic comic){
-        this.collection = collection;
+    public SignComic(Comic comic, UsersDAO userDAO, String username, int position){
         this.comic = comic;
+        this.usersDAO = userDAO;
+        this.username = username;
     }
 
     @Override
-    public void execute(){
-        Comic signed = new SignedComic(this.comic);
-        this.collection.removeComic(this.comic);
-        this.collection.addComic(this.comic);
+    public void execute() throws Exception {
+        Collection old = usersDAO.getCollection(username);
+        old.removeComic(comic);
+        SignedComic signedComic = new SignedComic(comic, username);
+        old.addComic(signedComic, position);
+        usersDAO.updateCollection(username, old);
+    }
+
+    public void undo() throws Exception {
+        Collection old = usersDAO.getCollection(username);
+        old.removeComic(comic);
+        old.addComic(comic, position);
+        usersDAO.updateCollection(username, old);
     }
 }
