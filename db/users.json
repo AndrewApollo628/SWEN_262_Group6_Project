@@ -1,1 +1,45 @@
-[{"username":"user","password":"pass","collection":[{"Series":"Series2","Issue":1,"Full Title":"Title2 vol. 1","Variant Description":"","Publisher":"Publisher2","Release Date":"January 1, 2001","Format":"Comic","Added Date":"January 1, 2001","Creator":"Rick Astley | Saul Goodman","Value":0},{"grade":2,"Series":"Series4","Issue":1,"Full Title":"Title4 vol. 1","Variant Description":"","Publisher":"Publisher4","Release Date":"January 4, 2001","Format":"Comic","Added Date":"January 1, 2001","Creator":"Creator4 | Creator5","Value":0},{"Series":"Series4","Issue":1,"Full Title":"Title4 vol. 1","Variant Description":"","Publisher":"Publisher4","Release Date":"January 4, 2001","Format":"Comic","Added Date":"January 1, 2001","Creator":"Keanu Reeves | William Shakespeare","Value":0}]}]
+[
+  {
+    "username": "user",
+    "password": "pass",
+    "collection": [
+      {
+        "Series": "Series2",
+        "Issue": 1,
+        "Full Title": "Title2 vol. 1",
+        "Variant Description": "",
+        "Publisher": "Publisher2",
+        "Release Date": "January 1, 2001",
+        "Format": "Comic",
+        "Added Date": "January 1, 2001",
+        "Creator": "Rick Astley | Saul Goodman",
+        "Value": 0
+      },
+      {
+        "grade": 2,
+        "Series": "Series4",
+        "Issue": 1,
+        "Full Title": "Title4 vol. 1",
+        "Variant Description": "",
+        "Publisher": "Publisher4",
+        "Release Date": "January 4, 2001",
+        "Format": "Comic",
+        "Added Date": "January 1, 2001",
+        "Creator": "Creator4 | Creator5",
+        "Value": 0
+      },
+      {
+        "Series": "Series4",
+        "Issue": 1,
+        "Full Title": "Title4 vol. 1",
+        "Variant Description": "",
+        "Publisher": "Publisher4",
+        "Release Date": "January 4, 2001",
+        "Format": "Comic",
+        "Added Date": "January 1, 2001",
+        "Creator": "Keanu Reeves | William Shakespeare",
+        "Value": 0
+      }
+    ]
+  }
+]

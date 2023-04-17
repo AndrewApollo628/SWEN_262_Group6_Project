@@ -12,8 +12,8 @@ public class ComicSerializer extends JsonSerializer<Comic> {
 
     @Override
     public void serialize(Comic value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        // if comic is instanceof comicdec then add just the regular comic fields
 
+        gen = gen.useDefaultPrettyPrinter();
         gen.writeStartObject();
         if (value instanceof ComicDec) {
             ComicDec dec = (ComicDec) value;
