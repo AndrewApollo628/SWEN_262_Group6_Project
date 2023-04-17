@@ -48,9 +48,8 @@ public class ComixAPI implements IComix {
     }
 
     @Override
-    public ArrayList<Comic> getUserCollection() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUserCollection'");
+    public ArrayList<Comic> getUserCollection() throws Exception {
+        return usersDAO.getCollection(currentUser);
     }
 
     @Override

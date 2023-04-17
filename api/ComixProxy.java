@@ -38,9 +38,12 @@ public class ComixProxy implements IComix {
     }
 
     @Override
-    public ArrayList<Comic> getUserCollection() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUserCollection'");
+    public ArrayList<Comic> getUserCollection() throws Exception {
+        if (!loggedIn) {
+            throw new Exception("User not logged in\n");
+        } else {
+            return api.getUserCollection();
+        }
     }
 
     @Override

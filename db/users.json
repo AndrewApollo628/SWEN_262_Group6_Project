@@ -28,7 +28,9 @@
                 "Release Date": "January 1, 2001",
                 "Format": "Comic",
                 "Added Date": "January 1, 2001",
-                "Creators": "Creator1 | Creator2"
+                "Creators": "Creator1 | Creator2",
+                "slabbed": true,
+                "grade": 2
               }
             ]
             

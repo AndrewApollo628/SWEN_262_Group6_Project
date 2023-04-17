@@ -15,7 +15,7 @@ public interface IComix {
     
     String getCurrentUser();
 
-    ArrayList<Comic> getUserCollection();
+    ArrayList<Comic> getUserCollection() throws Exception;
 
     String addToCollection(String comic);
 

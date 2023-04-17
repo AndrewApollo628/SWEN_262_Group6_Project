@@ -21,6 +21,7 @@ public class CommandHandler {
         commands.put(ExampleUndoable.COMMAND, new ExampleUndoable(api));
         commands.put(Undo.COMMAND, new Undo(this));
         commands.put(GetComics.COMMAND, new GetComics(api));
+        commands.put(MyCollection.COMMAND, new MyCollection(api));
         // commands.put("exit", new Exit());
     }
 
