@@ -36,4 +36,8 @@ public interface Comic {
 
     public String getAddedDate();
 
+    public String getSignature();
+
+    public int getGrade();
+
 }

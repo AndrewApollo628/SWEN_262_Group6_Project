@@ -16,9 +16,9 @@ public class Library implements ICliCmd {
     @Override
     public void execute(String[] args) throws Exception {
         if (args.length < 2) {
-            throw new IllegalArgumentException("Usage: get <show | search='' &| filter=''>\n");
+            throw new IllegalArgumentException("Usage: get <view | search='' &| filter=''>\n");
         }
-        if (args[1].equals("show")) {
+        if (args[1].equals("view")) {
             ArrayList<Comic> out = api.getAllComics();
             if (out != null) {
                 int i = 0;
@@ -30,6 +30,8 @@ public class Library implements ICliCmd {
             }
             return;
         }
+
+        throw new IllegalArgumentException("Usage: get <view | search='' &| filter=''>\n");
         
     }
   

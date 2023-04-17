@@ -2,12 +2,18 @@ package comic;
 
 public class SignedComic extends ComicDec{
 
-    public SignedComic(Comic comic){
+    private String signature;
+
+    public SignedComic(Comic comic, String signature){
         super(comic);
     }
 
     @Override
     public String toString(){
-        return "Signed " + super.toString();
+        return "SIGNED " + super.toString();
+    }
+
+    public String getSignature(){
+        return signature;
     }
 }

@@ -68,5 +68,37 @@ public abstract class ComicDec implements Comic {
         return comic.getAddedDate();
     }
 
+    public boolean isGraded() {
+        return comic instanceof GradedComic || (comic instanceof ComicDec && ((ComicDec) comic).isGraded());
+    }
+
+    public boolean isSlabbed() {
+        return comic instanceof SlabbedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSlabbed());
+    }
+
+    public boolean isSigned() {
+        return comic instanceof SignedComic || (comic instanceof ComicDec && ((ComicDec) comic).isSigned());
+    }
+
+    public int getGrade() {
+        if (comic instanceof GradedComic) {
+            return ((GradedComic) comic).getGrade();
+        } else if (comic instanceof ComicDec) {
+            return ((ComicDec) comic).getComic().getGrade();
+        } else {
+            return 0;
+        }
+    }
+
+    public String getSignature() {
+        if (comic instanceof SignedComic) {
+            return ((SignedComic) comic).getSignature();
+        } else if (comic instanceof ComicDec) {
+            return ((ComicDec) comic).getComic().getSignature();
+        } else {
+            return "";
+        }
+    }
+
 
 }

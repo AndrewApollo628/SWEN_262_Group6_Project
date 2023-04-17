@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import comic.Comic;
 import comic.ConcreteComic;
 import comic.GradedComic;
+import comic.SignedComic;
 import comic.SlabbedComic;
 
 /**
@@ -51,6 +52,9 @@ public class ComicDeserializer extends JsonDeserializer<Comic> {
 		}
 		if (node.has("slabbed")) {
 			comic = new SlabbedComic(comic);
+		}
+		if (node.has("signed")) {
+			comic = new SignedComic(comic, node.get("signed").asText());
 		}
 		return comic;
 	}

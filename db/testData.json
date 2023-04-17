@@ -30,8 +30,7 @@
         "Release Date": "January 3, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creator": "Creator3 | Creator4",
-        "slabbed": true
+        "Creator": "Creator3 | Creator4"
       },
       {
         "Series": "Series4",
@@ -42,8 +41,6 @@
         "Release Date": "January 4, 2001",
         "Format": "Comic",
         "Added Date": "January 1, 2001",
-        "Creator": "Creator4 | Creator5",
-        "grade":2,
-        "slabbed": true
+        "Creator": "Creator4 | Creator5"
       }
 ]
