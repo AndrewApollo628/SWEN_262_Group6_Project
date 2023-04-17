@@ -24,7 +24,7 @@ public interface Comic {
 
     public String getPublicationDate();
 
-    public List<String> getCreators();
+    public List<String> getCreator();
 
     public int getValue();
 
@@ -35,7 +35,5 @@ public interface Comic {
     public String getFormat();
 
     public String getAddedDate();
-
-    public String getCreator();
 
 }

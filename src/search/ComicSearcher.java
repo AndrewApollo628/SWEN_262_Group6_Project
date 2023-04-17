@@ -27,7 +27,7 @@ public class ComicSearcher {
     }
 
     private boolean checkInCreators(Comic c, String searchTerm){
-        for(String s:c.getCreators()){
+        for(String s:c.getCreator()){
             if(s.contains(searchTerm)){
                 return true;
             }

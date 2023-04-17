@@ -17,10 +17,10 @@ public class CommandHandler {
         commands.put(Login.COMMAND, new Login(api));
         commands.put(Logout.COMMAND, new Logout(api));
         commands.put(Help.COMMAND, new Help(commands));
-        commands.put(Example.COMMAND, new Example(api));
-        commands.put(ExampleUndoable.COMMAND, new ExampleUndoable(api));
+        // commands.put(Example.COMMAND, new Example(api));
+        // commands.put(ExampleUndoable.COMMAND, new ExampleUndoable(api));
         commands.put(Undo.COMMAND, new Undo(this));
-        commands.put(GetComics.COMMAND, new GetComics(api));
+        commands.put(Library.COMMAND, new Library(api));
         commands.put(MyCollection.COMMAND, new MyCollection(api));
         // commands.put("exit", new Exit());
     }

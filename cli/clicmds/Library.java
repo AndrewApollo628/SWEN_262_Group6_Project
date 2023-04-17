@@ -6,19 +6,19 @@ import cli.ColorWriter;
 import comic.Comic;
 
 
-public class GetComics implements ICliCmd {
+public class Library implements ICliCmd {
 
     private IComix api;
-    public static final String COMMAND = "get";
+    public static final String COMMAND = "library";
 
-    public GetComics(IComix api) { this.api = api; }
+    public Library(IComix api) { this.api = api; }
 
     @Override
     public void execute(String[] args) throws Exception {
         if (args.length < 2) {
-            throw new IllegalArgumentException("Usage: get <all | filter='' &| sort=''>\n");
+            throw new IllegalArgumentException("Usage: get <viewall | filter='' &| sort=''>\n");
         }
-        if (args[1].equals("all")) {
+        if (args[1].equals("viewall")) {
             ArrayList<Comic> out = api.getAllComics();
             if (out != null) {
                 int i = 0;

@@ -13,7 +13,7 @@ public class Login implements ICliCmd {
     @Override
     public void execute(String[] args) {
         if (args.length != 3) {
-            throw new IllegalArgumentException("Usage: login <username> <password>\n");
+            throw new IllegalArgumentException("Usage: login <username> <password>");
         }
        if (api.login(args[1], args[2])) {
             ColorWriter.out("Logged in as ", ColorWriter.ANSI_GREEN);

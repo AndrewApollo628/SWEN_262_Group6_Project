@@ -30,8 +30,8 @@ public abstract class ComicDec implements Comic {
     }
 
     @Override
-    public List<String> getCreators() {
-        return comic.getCreators();
+    public List<String> getCreator() {
+        return comic.getCreator();
     }
 
     @Override
@@ -66,11 +66,6 @@ public abstract class ComicDec implements Comic {
     @Override
     public String getAddedDate() {
         return comic.getAddedDate();
-    }
-
-    @Override
-    public String getCreator() {
-        return comic.getCreator();
     }
 
 

@@ -41,7 +41,7 @@ public class ComicSerializer extends JsonSerializer<Comic> {
                 gen.writeStringField("Release Date", ((ComicDec) value).getComic().getPublicationDate());
                 gen.writeStringField("Format", ((ComicDec) value).getComic().getFormat());
                 gen.writeStringField("Added Date", ((ComicDec) value).getComic().getAddedDate());
-                gen.writeStringField("Creator", ((ComicDec) value).getComic().getCreator());
+                gen.writeStringField("Creator", String.join(" | ", ((ComicDec) value).getComic().getCreator()));
                 gen.writeNumberField("Value", ((ComicDec) value).getComic().getValue());
             }
 
@@ -55,7 +55,7 @@ public class ComicSerializer extends JsonSerializer<Comic> {
             gen.writeStringField("Release Date", value.getPublicationDate());
             gen.writeStringField("Format", value.getFormat());
             gen.writeStringField("Added Date", value.getAddedDate());
-            gen.writeStringField("Creator", value.getCreator());
+            gen.writeStringField("Creator", String.join(" | ", value.getCreator()));
             gen.writeNumberField("Value", value.getValue());
         }
         gen.writeEndObject();

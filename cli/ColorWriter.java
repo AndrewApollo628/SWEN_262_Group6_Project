@@ -1,6 +1,5 @@
 package cli;
 
-import collection.GradeComic;
 import comic.Comic;
 import comic.GradedComic;
 
@@ -41,7 +40,7 @@ public class ColorWriter {
         }
         
         ColorWriter.out(comic.getFullTitle(), ColorWriter.ANSI_CYAN);
-        ColorWriter.out(" by " + comic.getCreators(), ColorWriter.ANSI_WHITE);
+        ColorWriter.out(" by " + comic.getCreator(), ColorWriter.ANSI_WHITE);
         ColorWriter.out(" Published by " + comic.getPublisher() + "\n", ColorWriter.ANSI_WHITE);
     }
 

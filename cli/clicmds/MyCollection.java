@@ -20,7 +20,7 @@ public class MyCollection extends UndoableCmd {
     public void execute(String[] args) throws Exception {
 
         if (args.length < 2) {
-            throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >\n");
+            throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >");
         }
 
         argumentStack.push(args);
@@ -40,7 +40,7 @@ public class MyCollection extends UndoableCmd {
         }
         if (args[1].equals("add")) {
             if (args.length < 3) {
-                throw new IllegalArgumentException("Usage: collection add [comic]\n");
+                throw new IllegalArgumentException("Usage: collection add [comic]");
             }
             int comic = Integer.parseInt(args[2]) - 1;
             api.addToCollection(comic);
@@ -49,7 +49,7 @@ public class MyCollection extends UndoableCmd {
         }
         if (args[1].equals("remove")) {
             if (args.length < 3) {
-                throw new IllegalArgumentException("Usage: collection remove [comic]\n");
+                throw new IllegalArgumentException("Usage: collection remove [comic]");
             }
             int comic = Integer.parseInt(args[2]) - 1;
             deletedComicStack.push(api.removeFromCollection(comic));
