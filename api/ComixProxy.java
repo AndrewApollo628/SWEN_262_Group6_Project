@@ -64,7 +64,9 @@ public class ComixProxy implements IComix {
     }
 
     @Override
-    public ArrayList<Comic> searchComic(String query, String filter) {
+    public ArrayList<Comic> searchComic(String context, String query, String filter) {
+        // context specifies wether collection or whole database is searched
+        // change other params and types as needed
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
     }
