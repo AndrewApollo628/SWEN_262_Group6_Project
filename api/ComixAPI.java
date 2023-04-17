@@ -11,7 +11,6 @@ import collection.RemoveComic;
 import collection.SignComic;
 import collection.SlabComic;
 import comic.Comic;
-import filter.ComicSorter;
 import filter.SortByDate;
 import filter.SortByPublisher;
 import filter.SortByTitle;
@@ -82,40 +81,43 @@ public class ComixAPI implements IComix {
     }
 
     @Override
-    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException {
-        ComicSearcher searcher = new ComicSearcher(comicsDAO);
+    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws Exception {
+        ComicSearcher searcher;
+        if (Context.equals("collection")) {
+            searcher = new ComicSearcher(usersDAO.getCollection(currentUser).getContents());
+        } else {
+            searcher = new ComicSearcher(comicsDAO.getComics());
+        }
         SortByDate sortDate =  new SortByDate();
         SortByPublisher sortPub = new SortByPublisher();
         SortByTitle sortTitle = new SortByTitle();
         List<Comic> comicsList = new ArrayList<>();
 
-        if(query.length() != 0){
+        if(query.length()>0){
             ComicSearchResult searchedComics = searcher.makeSearch(query);
 
             comicsList = searchedComics.resultList; 
 
-            if(sort.toLowerCase() == "date" && reverse.toLowerCase() == "f"){
+            if(sort.toLowerCase().equals("date") && reverse.toLowerCase().equals("f")){
                 sortDate.doSort(comicsList, false);
             }
-            else if(sort.toLowerCase() == "date" && reverse.toLowerCase() == "t"){
+            else if(sort.toLowerCase().equals("date") && reverse.toLowerCase().equals("t")){
                 sortDate.doSort(comicsList, true);
             }
-            else if(sort.toLowerCase() == "publisher" && reverse.toLowerCase() == "f"){
+            else if(sort.toLowerCase().equals("publisher") && reverse.toLowerCase().equals("f")){
                 sortPub.doSort(comicsList, false);
             }
-            else if(sort.toLowerCase() == "publisher" && reverse.toLowerCase() == "t"){
+            else if(sort.toLowerCase().equals("publisher") && reverse.toLowerCase().equals("t")){
                 sortPub.doSort(comicsList, true);
             }
-            else if(sort.toLowerCase() == "title" && reverse.toLowerCase() == "f"){
+            else if(sort.toLowerCase().equals("title") && reverse.toLowerCase().equals("f")){
                 sortTitle.doSort(comicsList, false);
             }
-            else if(sort.toLowerCase() == "title" && reverse.toLowerCase() == "t"){
+            else if(sort.toLowerCase().equals("title") && reverse.toLowerCase().equals("t")){
                 sortTitle.doSort(comicsList, true);
             }
-        }
-
-        else{
-            System.out.println("Invalid search");
+        } else {
+            throw new IllegalArgumentException("Query is empty");
         }
 
         return comicsList;

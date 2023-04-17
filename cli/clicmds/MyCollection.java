@@ -1,6 +1,7 @@
 package cli.clicmds;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import api.IComix;
@@ -20,7 +21,7 @@ public class MyCollection extends UndoableCmd {
     public void execute(String[] args) throws Exception {
 
         if (args.length < 2) {
-            throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] | sign [comic] >");
+            throw new IllegalArgumentException("Usage: collection <view | add | remove | grade | slab | sign | search>");
         }
 
         argumentStack.push(args);
@@ -86,7 +87,29 @@ public class MyCollection extends UndoableCmd {
             return;
         }
 
-        throw new IllegalArgumentException("Usage: collection <view | add [comic] | remove [comic] | grade [comic] | slab [comic] >");
+        if (args[1].equals("search")) {
+            if (args.length < 5) {
+                throw new IllegalArgumentException("Usage: collection search [search] [sort] [reverse]");
+            }
+            String search = args[2];
+            String sort = args[3];
+            String reverse = args[4];
+            List<Comic> out = api.searchComic(search, "collection", sort, reverse);
+            argumentStack.pop();
+
+            if (out != null) {
+                System.out.println("Viewing collection for user " + api.getCurrentUser());
+                int i = 0;
+                for (Comic comic : out) {
+                    ColorWriter.out((i+1) + " - ", ColorWriter.ANSI_CYAN);
+                    ColorWriter.printComic(comic);
+                    i++;
+                }
+            }
+            return;
+        }
+
+        throw new IllegalArgumentException("Usage: collection <view | add | remove | grade | slab | sign | search>");
 
     }
 

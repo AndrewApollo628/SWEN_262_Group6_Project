@@ -21,10 +21,9 @@ public class ComixProxy implements IComix {
     }
 
     public void logout() {
-        if (!loggedIn) {
+        if (loggedIn) {
             api.logout();
             loggedIn=false;
-            System.out.println("  - unloaded COMIX API");
         }
     }
 
@@ -65,12 +64,14 @@ public class ComixProxy implements IComix {
     }
 
     @Override
-    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException {
-        if(Context.toLowerCase().equals("collection") && !loggedIn){
-            throw new UnsupportedOperationException("Your Not Logged In");
+    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws Exception {
+        if(!loggedIn){
+            if (Context.toLowerCase().equals("collection")) {
+                throw new UnsupportedOperationException("User Not Logged In");
+            }
+            System.out.println("<<GUEST MODE>>");
         }
         return api.searchComic(query, Context, sort, reverse);
-        
     }
 
     @Override

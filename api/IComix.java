@@ -22,7 +22,7 @@ public interface IComix {
 
     Comic removeFromCollection(int comic) throws Exception;
 
-    List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException;
+    List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException, Exception;
     ArrayList<Comic> getAllComics() throws Exception;
 
     void gradeComic(int comic, int grade) throws Exception;
