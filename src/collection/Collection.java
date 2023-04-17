@@ -1,7 +1,10 @@
 package collection;
 
 import comic.Comic;
+import persistence.UsersDAO;
+import persistence.UsersJsonDAO;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Collection {
@@ -11,7 +14,6 @@ public class Collection {
     public Collection(){
         this.collection = new ArrayList<>();
     }
-
 
     /**
      * Alternative constructor for importing a collection
@@ -32,4 +34,12 @@ public class Collection {
     public ArrayList<Comic> getContents(){
         return collection;
     }
+
+    @Override
+    public String toString() {
+        return "Collection{" +
+                "collection=" + collection +
+                '}';
+    }
+
 }

@@ -7,6 +7,30 @@
     {
         "username": "user",
         "password": "user",
-        "collection": []
+        "collection": [
+            {
+                "Series": "Series1",
+                "Issue": "1",
+                "Full Title": "Title1 vol. 1",
+                "Variant Description": "",
+                "Publisher": "Publisher1",
+                "Release Date": "January 1, 2001",
+                "Format": "Comic",
+                "Added Date": "January 1, 2001",
+                "Creators": "Creator1 | Creator2"
+              },
+              {
+                "Series": "Series2",
+                "Issue": "1",
+                "Full Title": "Title2 vol. 1",
+                "Variant Description": "",
+                "Publisher": "Publisher2",
+                "Release Date": "January 1, 2001",
+                "Format": "Comic",
+                "Added Date": "January 1, 2001",
+                "Creators": "Creator1 | Creator2"
+              }
+            ]
+            
     }
 ]

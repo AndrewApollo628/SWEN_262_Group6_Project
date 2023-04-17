@@ -1,10 +1,13 @@
 package user;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import collection.Collection;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import comic.Comic;
+import persistence.UsersJsonDAO;
 
 /**
  * Defines the User class
@@ -13,19 +16,18 @@ import comic.Comic;
  */
 public class User {
 
-    static final String strFormat = "User [username=%s, password=%s, collection=%s]";
-
     @JsonProperty("username") private String username;
     @JsonProperty("password") private String password;
-    @JsonProperty("collection") private Collection collection;
+    @JsonProperty("collection") private ArrayList<Comic> collectionRaw;
+    private Collection collection;
 
-    public User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") Collection collection) {
+    public User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("collection") ArrayList<Comic> collectionRaw) {
         this.username = username;
         this.password = password;
-        if (collection == null) {
+        if (collectionRaw == null) {
             this.collection = new Collection();
         } else {
-            this.collection = collection;
+            this.collection = new Collection(collectionRaw);
         }
     }
 
@@ -55,7 +57,7 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format(strFormat, username, password, collection);
+        return "User [username=" + username + ", password=" + password + ", collection=" + collection + "]";
     }
 
     @Override
