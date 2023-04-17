@@ -27,6 +27,7 @@ public class MyCollection extends UndoableCmd {
 
         if (args[1].equals("view")) {
             ArrayList<Comic> out = api.getUserCollection();
+            argumentStack.pop();
             if (out != null) {
                 System.out.println("Viewing collection for user " + api.getCurrentUser());
                 int i = 0;
@@ -44,7 +45,7 @@ public class MyCollection extends UndoableCmd {
             }
             int comic = Integer.parseInt(args[2]) - 1;
             api.addToCollection(comic);
-            System.out.println("Added comic " + comic+1 + " to collection");
+            System.out.println("Added comic " + (comic+1) + " to collection");
             return;
         }
         if (args[1].equals("remove")) {
@@ -53,7 +54,7 @@ public class MyCollection extends UndoableCmd {
             }
             int comic = Integer.parseInt(args[2]) - 1;
             deletedComicStack.push(api.removeFromCollection(comic));
-            System.out.println("Removed comic " + comic+1 + " from collection");
+            System.out.println("Removed comic " + (comic+1) + " from collection");
             return;
         }
 
@@ -61,17 +62,22 @@ public class MyCollection extends UndoableCmd {
 
     @Override
     public void undo() throws Exception {
-        String[] latest = argumentStack.pop();
-
-        if (latest[1].equals("add")) {
-            int comic = api.getUserCollection().size() - 1;
-            api.removeFromCollection(comic);
-        } else if (latest[1].equals("remove")) {
-            Comic comic = deletedComicStack.pop();
-            api.addToCollection(comic);
+        String[] lastArg = argumentStack.pop();
+        if (lastArg == null) {
+            throw new Exception("Nothing to undo\n");
         }
-
-        System.out.println("Undone last action");
+        if (lastArg[1].equals("add")) {
+            int comic = api.getUserCollection().size() - 1;
+            System.out.println("Undo adding comic " + (comic+1) + " to collection");
+            api.removeFromCollection(comic);
+            return;
+        } 
+        if (lastArg[1].equals("remove")) {
+            Comic comic = deletedComicStack.pop();
+            System.out.println("Undo removing comic from collection");
+            api.addToCollection(comic);
+            return;
+        }
     }
     
 }

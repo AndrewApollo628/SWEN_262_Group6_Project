@@ -11,7 +11,7 @@ public class ComixProxy implements IComix {
     private boolean loggedIn = false;
 
     public String getCurrentUser() {
-        if (loggedIn) { return null; }
+        if (!loggedIn) { return null; }
         else { return api.getCurrentUser(); }
     }
 
