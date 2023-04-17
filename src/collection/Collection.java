@@ -1,10 +1,6 @@
 package collection;
 
 import comic.Comic;
-import persistence.UsersDAO;
-import persistence.UsersJsonDAO;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Collection {

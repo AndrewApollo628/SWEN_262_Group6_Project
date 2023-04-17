@@ -64,13 +64,7 @@ public class ComixProxy implements IComix {
     }
 
     @Override
-    public String getComic(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getComic'");
-    }
-
-    @Override
-    public ArrayList<Comic> searchComic(String query, String filter, String sort) {
+    public ArrayList<Comic> searchComic(String query, String filter) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
     }

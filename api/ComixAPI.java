@@ -24,7 +24,7 @@ public class ComixAPI implements IComix {
     public ComixAPI() {
         usersDAO = new UsersJsonDAO("db/users.json");
         comicsDAO = new ComicsJsonDAO("db/testData.json");
-        // comicsDAO = new ComicsJsonDAO("db/comics.json");
+        // comicsDAO = new ComicsJsonDAO("db/comics.json"); // TODO: this is the real one
     }
 
     public boolean login(String username, String password) {
@@ -74,13 +74,7 @@ public class ComixAPI implements IComix {
     }
 
     @Override
-    public String getComic(String comic) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getComic'");
-    }
-
-    @Override
-    public ArrayList<Comic> searchComic(String query, String filter, String sort) {
+    public ArrayList<Comic> searchComic(String query, String filter) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
     }

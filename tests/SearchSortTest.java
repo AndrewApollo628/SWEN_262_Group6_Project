@@ -1,19 +1,10 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.File;
-import java.util.ArrayList;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.platform.commons.annotation.Testable;
@@ -23,8 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import comic.Comic;
 import comic.ConcreteComic;
 import persistence.ComicsJsonDAO;
-import persistence.UsersDAO;
-import persistence.UsersJsonDAO;
 import search.ComicSearchResult;
 import search.ComicSearcher;
 

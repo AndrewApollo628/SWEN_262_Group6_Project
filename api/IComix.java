@@ -20,9 +20,7 @@ public interface IComix {
 
     Comic removeFromCollection(int comic) throws Exception;
 
-    String getComic(String comic);
-
-    ArrayList<Comic> searchComic(String query, String filter, String sort);
+    ArrayList<Comic> searchComic(String query, String filter);
 
     ArrayList<Comic> getAllComics() throws Exception;
 
