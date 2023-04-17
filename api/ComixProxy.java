@@ -71,7 +71,7 @@ public class ComixProxy implements IComix {
             }
             System.out.println("<<GUEST MODE>>");
         }
-        return api.searchComic(query, Context, sort, reverse);
+        return api.searchComic(query.toLowerCase(), Context, sort.toLowerCase(), ""+reverse.toLowerCase().charAt(0));
     }
 
     @Override

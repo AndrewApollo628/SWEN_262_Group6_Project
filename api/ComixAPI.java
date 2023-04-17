@@ -30,8 +30,8 @@ public class ComixAPI implements IComix {
 
     public ComixAPI() {
         usersDAO = new UsersJsonDAO("db/users.json");
-        comicsDAO = new ComicsJsonDAO("db/testData.json");
-        // comicsDAO = new ComicsJsonDAO("db/comics.json"); // TODO: this is the real one
+        // comicsDAO = new ComicsJsonDAO("db/testData.json"); // testing
+        comicsDAO = new ComicsJsonDAO("db/comics.json"); // TODO: this is the real one
     }
 
     public boolean login(String username, String password) {

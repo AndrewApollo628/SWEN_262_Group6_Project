@@ -16,8 +16,8 @@ public class ComicSearcher {
     public ComicSearchResult makeSearch(String searchTerm) throws IOException{
         List<Comic> searchResultList = new ArrayList<Comic>();
         for (Comic comic : comicList) {
-            if(comic.getFullTitle().contains(searchTerm)
-                || comic.getVariantDescription().contains(searchTerm)
+            if(comic.getFullTitle().toLowerCase().contains(searchTerm)
+                || comic.getVariantDescription().toLowerCase().contains(searchTerm)
                 || checkInCreators(comic, searchTerm)
                 ){
                     searchResultList.add(comic);
@@ -28,7 +28,7 @@ public class ComicSearcher {
 
     private boolean checkInCreators(Comic c, String searchTerm){
         for(String s:c.getCreator()){
-            if(s.contains(searchTerm)){
+            if(s.toLowerCase().contains(searchTerm)){
                 return true;
             }
         }
