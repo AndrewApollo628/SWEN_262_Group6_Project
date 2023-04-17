@@ -82,7 +82,7 @@ public abstract class ComicDec implements Comic {
 
     public int getGrade() {
         if (this instanceof GradedComic) {
-            return ((GradedComic) comic).getGrade();
+            return ((GradedComic) this).getGrade();
         } else if (comic instanceof ComicDec) {
             return ((ComicDec) comic).getComic().getGrade();
         } else {
