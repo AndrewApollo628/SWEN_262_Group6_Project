@@ -28,6 +28,8 @@ public class ComixAPI implements IComix {
     private String currentUser;
     public String getCurrentUser() { return currentUser; }
 
+    private ArrayList<Comic> latestResults;
+
     public ComixAPI() {
         usersDAO = new UsersJsonDAO("db/users.json");
         // comicsDAO = new ComicsJsonDAO("db/testData.json"); // testing
@@ -51,7 +53,8 @@ public class ComixAPI implements IComix {
 
     @Override
     public ArrayList<Comic> getAllComics() throws IOException {
-        return comicsDAO.getComics();
+        latestResults = comicsDAO.getComics();
+        return latestResults;
     }
 
     @Override
@@ -61,7 +64,7 @@ public class ComixAPI implements IComix {
 
     @Override
     public void addToCollection(int comic) throws Exception {
-        Comic comicToAdd = comicsDAO.getComics().get(comic);
+        Comic comicToAdd = latestResults.get(comic);
         AddComic addComic = new AddComic(comicToAdd, usersDAO, currentUser);
         addComic.execute();
     }
@@ -119,7 +122,8 @@ public class ComixAPI implements IComix {
         } else {
             throw new IllegalArgumentException("Query is empty");
         }
-
+        
+        latestResults = (ArrayList<Comic>) comicsList;
         return comicsList;
     }
 
