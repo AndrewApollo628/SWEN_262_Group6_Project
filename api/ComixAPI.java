@@ -3,16 +3,23 @@ package api;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import collection.AddComic;
 import collection.GradeComic;
 import collection.RemoveComic;
 import collection.SlabComic;
 import comic.Comic;
+import filter.ComicSorter;
+import filter.SortByDate;
+import filter.SortByPublisher;
+import filter.SortByTitle;
 import persistence.ComicsDAO;
 import persistence.ComicsJsonDAO;
 import persistence.UsersDAO;
 import persistence.UsersJsonDAO;
+import search.ComicSearchResult;
+import search.ComicSearcher;
 
 public class ComixAPI implements IComix {
     private UsersDAO usersDAO;
@@ -74,9 +81,43 @@ public class ComixAPI implements IComix {
     }
 
     @Override
-    public ArrayList<Comic> searchComic(String query, String filter) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchComic'");
+    public List<Comic> searchComic(String query, String Context, String sort, String reverse) throws IOException {
+        ComicSearcher searcher = new ComicSearcher(comicsDAO);
+        SortByDate sortDate =  new SortByDate();
+        SortByPublisher sortPub = new SortByPublisher();
+        SortByTitle sortTitle = new SortByTitle();
+        List<Comic> comicsList = new ArrayList<>();
+
+        if(query.length() != 0){
+            ComicSearchResult searchedComics = searcher.makeSearch(query);
+
+            comicsList = searchedComics.resultList; 
+
+            if(sort.toLowerCase() == "date" && reverse.toLowerCase() == "f"){
+                sortDate.doSort(comicsList, false);
+            }
+            else if(sort.toLowerCase() == "date" && reverse.toLowerCase() == "t"){
+                sortDate.doSort(comicsList, true);
+            }
+            else if(sort.toLowerCase() == "publisher" && reverse.toLowerCase() == "f"){
+                sortPub.doSort(comicsList, false);
+            }
+            else if(sort.toLowerCase() == "publisher" && reverse.toLowerCase() == "t"){
+                sortPub.doSort(comicsList, true);
+            }
+            else if(sort.toLowerCase() == "title" && reverse.toLowerCase() == "f"){
+                sortTitle.doSort(comicsList, false);
+            }
+            else if(sort.toLowerCase() == "title" && reverse.toLowerCase() == "t"){
+                sortTitle.doSort(comicsList, true);
+            }
+        }
+
+        else{
+            System.out.println("Invalid search");
+        }
+
+        return comicsList;
     }
 
     @Override
