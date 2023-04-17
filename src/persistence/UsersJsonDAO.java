@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import collection.Collection;
 import comic.Comic;
 import user.User;
 
@@ -64,14 +65,14 @@ public class UsersJsonDAO implements UsersDAO {
     public ArrayList<Comic> getCollection(String username) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return user.getCollection();
+                return user.getCollection().getContents();
             }
         }
         return null;
     }
 
     @Override
-    public Boolean updateCollection(String username, ArrayList<Comic> collection) throws IOException {
+    public Boolean updateCollection(String username, Collection collection) throws IOException {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 user.setCollection(collection);

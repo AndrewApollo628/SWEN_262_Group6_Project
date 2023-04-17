@@ -2,6 +2,7 @@ package persistence;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import collection.Collection;
 import comic.Comic;
 import user.User;
 
@@ -20,7 +21,7 @@ public interface UsersDAO {
 
     ArrayList<Comic> getCollection(String username) throws IOException;
 
-    Boolean updateCollection(String username, ArrayList<Comic> collection) throws IOException;
+    Boolean updateCollection(String username, Collection collection) throws IOException;
 
     boolean deleteUser(String username) throws IOException;
 
