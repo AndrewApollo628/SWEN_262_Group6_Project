@@ -40,12 +40,12 @@ public class ColorWriter {
             
         }
         String title = comic.getFullTitle();
-        if (title.length() > 20) {
-            title = title.substring(0, 20) + "...";
+        if (title.length() > 23) {
+            title = String.format("%-20s...", title);
         }
         String creator = String.join(", ", comic.getCreator());
-        if (creator.length() > 20) {
-            creator = creator.substring(0, 20) + "...";
+        if (creator.length() > 23) {
+            creator = String.format("%-20s...", creator);
         }
         ColorWriter.out(title, ColorWriter.ANSI_CYAN);
         ColorWriter.out(" by " + creator, ColorWriter.ANSI_WHITE);
