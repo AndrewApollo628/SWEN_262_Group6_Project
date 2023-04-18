@@ -1,6 +1,7 @@
 package collection;
 
 import comic.Comic;
+import comic.ComicDec;
 import comic.SignedComic;
 import persistence.UsersDAO;
 
@@ -20,6 +21,11 @@ public class SignComic implements CollectionCommand{
     @Override
     public void execute() throws Exception {
         Collection old = usersDAO.getCollection(username);
+        if (comic instanceof ComicDec) {
+            if (((ComicDec) comic).isSigned()) {
+                throw new Exception("Comic is already graded");
+            }
+        }
         old.removeComic(comic);
         SignedComic signedComic = new SignedComic(comic, username);
         old.addComic(signedComic, position);

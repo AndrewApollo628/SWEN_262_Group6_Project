@@ -3,6 +3,7 @@ package collection;
 import java.io.IOException;
 
 import comic.Comic;
+import comic.ComicDec;
 import comic.SlabbedComic;
 import persistence.UsersDAO;
 
@@ -21,8 +22,13 @@ public class SlabComic implements CollectionCommand {
     }
 
     @Override
-    public void execute() throws IOException {
+    public void execute() throws Exception {
         Collection old = usersDAO.getCollection(username);
+        if (comic instanceof ComicDec) {
+            if (((ComicDec) comic).isSlabbed()) {
+                throw new Exception("Comic is already graded");
+            }
+        }
         old.removeComic(comic);
         old.addComic(new SlabbedComic(comic),index);
         usersDAO.updateCollection(username, old);
