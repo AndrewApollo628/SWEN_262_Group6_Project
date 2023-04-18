@@ -14,7 +14,19 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
-    "Value" : 15
+    "Value" : 12
+  }, {
+    "grade" : 9,
+    "Series" : "Batman, Vol. 1",
+    "Issue" : 434,
+    "Full Title" : "The Many Deaths Of The Batman, Chapter Two: How Many Times Can A Batman Die?",
+    "Variant Description" : "",
+    "Publisher" : "DC Comics",
+    "Release Date" : "Apr 1989",
+    "Format" : "Comic",
+    "Added Date" : "Feb 23, 2014",
+    "Creator" : "John Byrne | Jim Aparo | Mike DeCarlo",
+    "Value" : 13
   } ]
 }, {
   "username" : "hello",
@@ -29,6 +41,6 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
-    "Value" : 12
+    "Value" : 13
   } ]
 } ]

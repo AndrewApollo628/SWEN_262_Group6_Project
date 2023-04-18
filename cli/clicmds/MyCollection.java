@@ -135,7 +135,7 @@ public class MyCollection extends UndoableCmd {
             int comic = Integer.parseInt(lastArg[2]) - 1;
             int grade = Integer.parseInt(lastArg[3]);
             System.out.println("Undo grading comic " + (comic+1) + " with grade " + grade);
-            api.gradeComic(comic, 0);
+            api.unGradeComic(comic);
             return;
         }
         if (lastArg[1].equals("slab")) {
