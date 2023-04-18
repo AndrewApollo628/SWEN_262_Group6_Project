@@ -14,7 +14,7 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
-    "Value" : 12
+    "Value" : 13
   }, {
     "grade" : 9,
     "Series" : "Batman, Vol. 1",
@@ -26,7 +26,18 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "John Byrne | Jim Aparo | Mike DeCarlo",
-    "Value" : 13
+    "Value" : 2
+  }, {
+    "Series" : "The Avengers Annual",
+    "Issue" : 18,
+    "Full Title" : "Atlantis Attacks - Chapter Eight: Avengers Assembled / The Initiation Of Quasar / Cap's Avengerability Analysis / Saga Of The Serpent Crown: Manifest Destiny, Chapter 8",
+    "Variant Description" : "",
+    "Publisher" : "Marvel Comics",
+    "Release Date" : "Jan 1989",
+    "Format" : "Comic",
+    "Added Date" : "Feb 23, 2014",
+    "Creator" : "Peter Sanderson | Mark Gruenwald | Fabian Nicieza",
+    "Value" : 0
   } ]
 }, {
   "username" : "hello",
@@ -41,6 +52,6 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
-    "Value" : 13
+    "Value" : 14
   } ]
 } ]
