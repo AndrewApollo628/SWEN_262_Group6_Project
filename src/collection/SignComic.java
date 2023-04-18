@@ -21,13 +21,9 @@ public class SignComic implements CollectionCommand{
     @Override
     public void execute() throws Exception {
         Collection old = usersDAO.getCollection(username);
-        if (comic instanceof ComicDec) {
-            if (((ComicDec) comic).isSigned()) {
-                throw new Exception("Comic is already graded");
-            }
-        }
         old.removeComic(comic);
         SignedComic signedComic = new SignedComic(comic, username);
+        signedComic.setValue(calculateNewValue());
         old.addComic(signedComic, position);
         usersDAO.updateCollection(username, old);
     }
@@ -35,7 +31,17 @@ public class SignComic implements CollectionCommand{
     public void undo() throws Exception {
         Collection old = usersDAO.getCollection(username);
         old.removeComic(comic);
-        old.addComic(comic, position);
+        Comic oldComic = ((ComicDec)comic).getComic();
+        oldComic.setValue(calculateOldValue());
+        old.addComic(oldComic, position);
         usersDAO.updateCollection(username, old);
+    }
+
+    private int calculateNewValue() {
+        return (int) (comic.getValue() * 1.2);
+    }
+
+    private int calculateOldValue() {
+        return (int) (comic.getValue() / 1.2);
     }
 }

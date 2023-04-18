@@ -31,7 +31,7 @@ public class ComicDeserializer extends JsonDeserializer<Comic> {
 		JsonNode node = oc.readTree(p);
 
 		int ComicValue = 1;
-		if (node.has("Value")) {
+		if (node.has("Value") && node.get("Value").asInt() != 0) {
 			ComicValue = node.get("Value").asInt();
 		}
 		Comic comic = new ConcreteComic (
@@ -46,6 +46,9 @@ public class ComicDeserializer extends JsonDeserializer<Comic> {
 			node.get("Creator").asText(),
 			ComicValue
 		);
+		int newvalue = ComicValue*comic.getFullTitle().hashCode();
+		newvalue = Math.abs(newvalue) % 20 + 1;
+		comic.setValue(newvalue);
 
 		if (node.has("grade")) {
 			comic = new GradedComic(node.get("grade").asInt(), comic);

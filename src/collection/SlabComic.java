@@ -30,15 +30,27 @@ public class SlabComic implements CollectionCommand {
             }
         }
         old.removeComic(comic);
-        old.addComic(new SlabbedComic(comic),index);
+        SlabbedComic slabbedComic = new SlabbedComic(comic);
+        slabbedComic.setValue(calculateNewValue());
+        old.addComic(slabbedComic,index);
         usersDAO.updateCollection(username, old);
     }
     
     public void undo() throws IOException {
         Collection old = usersDAO.getCollection(username);
         old.removeComic(comic);
-        old.addComic(((comic.ComicDec)comic).getComic(), index);
+        Comic oldComic = ((comic.ComicDec)comic).getComic();
+        oldComic.setValue(calculateOldValue());
+        old.addComic(oldComic, index);
         usersDAO.updateCollection(username, old);
+    }
+
+    private int calculateNewValue() {
+        return comic.getValue() * 2;
+    }
+
+    private int calculateOldValue() {
+        return comic.getValue() / 2;
     }
 
 }

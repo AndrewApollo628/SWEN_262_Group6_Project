@@ -32,15 +32,35 @@ public class GradeComic implements CollectionCommand{
             }
         }
         old.removeComic(comic);
-        old.addComic(new GradedComic(grade, comic), position);
+        GradedComic gradedComic = new GradedComic(grade, comic);
+        gradedComic.setValue(calculateNewValue());
+        old.addComic(gradedComic, position);
         usersDAO.updateCollection(username, old);
     }
 
     public void undo() throws IOException {
         Collection old = usersDAO.getCollection(username);
         old.removeComic(comic);
-        old.addComic(((comic.ComicDec)comic).getComic(), position);
+        Comic oldComic = ((comic.ComicDec)comic).getComic();
+        oldComic.setValue(calculateOldValue());
+        old.addComic(oldComic, position);
         usersDAO.updateCollection(username, old);
+    }
+
+    private int calculateNewValue() {
+        if (grade == 1) {
+            return (int) (comic.getValue() * 0.10);
+        } else {
+            return (int) (Math.log10(grade) * comic.getValue());
+        }
+    }
+
+    private int calculateOldValue() {
+        if (grade == 1) {
+            return (int) (comic.getValue() / 0.10);
+        } else {
+            return (int) (comic.getValue() / Math.log10(grade));
+        }
     }
         
 }

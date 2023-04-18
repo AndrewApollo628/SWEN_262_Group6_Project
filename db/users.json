@@ -2,52 +2,18 @@
   "username" : "user",
   "password" : "pass",
   "collection" : [ {
-    "grade" : 1,
+    "grade" : 0,
     "slabbed" : true,
     "signed" : null,
-    "Series" : "Series2",
-    "Issue" : 1,
-    "Full Title" : "Title2 vol. 1",
+    "Series" : "Batman, Vol. 1",
+    "Issue" : 657,
+    "Full Title" : "Batman & Son, Part 3: Wonderboys",
     "Variant Description" : "",
-    "Publisher" : "Publisher2",
-    "Release Date" : "January 1, 2001",
-    "Format" : "Comic",
-    "Added Date" : "January 1, 2001",
-    "Creator" : "Rick Astley | Saul Goodman",
-    "Value" : 0
-  }, {
-    "Series" : "Series4",
-    "Issue" : 1,
-    "Full Title" : "Title4 vol. 1",
-    "Variant Description" : "",
-    "Publisher" : "Publisher4",
-    "Release Date" : "January 4, 2001",
-    "Format" : "Comic",
-    "Added Date" : "January 1, 2001",
-    "Creator" : "Creator4 | Creator5",
-    "Value" : 0
-  }, {
-    "Series" : "Series4",
-    "Issue" : 1,
-    "Full Title" : "Title4 vol. 1",
-    "Variant Description" : "",
-    "Publisher" : "Publisher4",
-    "Release Date" : "January 4, 2001",
-    "Format" : "Comic",
-    "Added Date" : "January 1, 2001",
-    "Creator" : "Keanu Reeves | William Shakespeare",
-    "Value" : 0
-  }, {
-    "grade" : 2,
-    "Series" : "Superman / Batman",
-    "Issue" : 0,
-    "Full Title" : "The World's Finest, Part 1",
-    "Variant Description" : "Batman Cover",
     "Publisher" : "DC Comics",
-    "Release Date" : "Oct 2003",
+    "Release Date" : "Sep 2006",
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
-    "Creator" : "Jeph Loeb | Edward McGuinness, Jr. | Dexter Vines",
-    "Value" : 0
+    "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
+    "Value" : 22
   } ]
 } ]

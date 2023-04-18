@@ -62,7 +62,7 @@ public class ConcreteComic implements Comic {
 
     @Override
     public int getValue() {
-        return 0;
+        return value;
     }
 
     @Override
@@ -110,5 +110,9 @@ public class ConcreteComic implements Comic {
 
     public int getGrade() {
         return 0;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

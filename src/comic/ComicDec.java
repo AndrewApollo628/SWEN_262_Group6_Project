@@ -49,6 +49,11 @@ public abstract class ComicDec implements Comic {
         return comic.getValue();
     }
 
+    @Override
+    public void setValue(int value) {
+        comic.setValue(value);
+    }
+
     public Comic getComic() {
         return comic;
     }
@@ -99,6 +104,5 @@ public abstract class ComicDec implements Comic {
             return "";
         }
     }
-
 
 }

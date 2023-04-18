@@ -42,7 +42,8 @@ public class ColorWriter {
         
         ColorWriter.out(comic.getFullTitle(), ColorWriter.ANSI_CYAN);
         ColorWriter.out(" by " + comic.getCreator(), ColorWriter.ANSI_WHITE);
-        ColorWriter.out(" Published by " + comic.getPublisher() + "\n", ColorWriter.ANSI_WHITE);
+        ColorWriter.out(" Published by " + comic.getPublisher(), ColorWriter.ANSI_WHITE);
+        ColorWriter.out(" $" + comic.getValue() + "\n", ColorWriter.ANSI_YELLOW);
     }
 
 }

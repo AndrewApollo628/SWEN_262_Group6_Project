@@ -40,4 +40,6 @@ public interface Comic {
 
     public int getGrade();
 
+    public void setValue(int value);
+
 }
