@@ -39,10 +39,17 @@ public class ColorWriter {
             }
             
         }
-        
-        ColorWriter.out(comic.getFullTitle(), ColorWriter.ANSI_CYAN);
-        ColorWriter.out(" by " + comic.getCreator(), ColorWriter.ANSI_WHITE);
-        ColorWriter.out(" Published by " + comic.getPublisher(), ColorWriter.ANSI_WHITE);
+        String title = comic.getFullTitle();
+        if (title.length() > 20) {
+            title = title.substring(0, 20) + "...";
+        }
+        String creator = String.join(", ", comic.getCreator());
+        if (creator.length() > 20) {
+            creator = creator.substring(0, 20) + "...";
+        }
+        ColorWriter.out(title, ColorWriter.ANSI_CYAN);
+        ColorWriter.out(" by " + creator, ColorWriter.ANSI_WHITE);
+        ColorWriter.out(" Published by " + comic.getPublisher(), ColorWriter.ANSI_PURPLE);
         ColorWriter.out(" $" + comic.getValue() + "\n", ColorWriter.ANSI_YELLOW);
     }
 
