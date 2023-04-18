@@ -136,4 +136,13 @@ public class ComixProxy implements IComix {
         }
     }
 
+    @Override
+    public boolean signup(String username, String password) throws Exception {
+        if (!loggedIn) {
+            return api.signup(username, password);
+        } else {
+            throw new UnsupportedOperationException("You are already logged in");
+        }
+    }
+
 }

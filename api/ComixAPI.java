@@ -170,4 +170,9 @@ public class ComixAPI implements IComix {
         unSignComic.undo();
     }
 
+    @Override
+    public boolean signup(String username, String password) throws Exception {
+        return usersDAO.addUser(username, password);
+    }
+
 }

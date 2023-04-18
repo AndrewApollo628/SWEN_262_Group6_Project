@@ -14,6 +14,21 @@
     "Format" : "Comic",
     "Added Date" : "Feb 23, 2014",
     "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
-    "Value" : 22
+    "Value" : 15
+  } ]
+}, {
+  "username" : "hello",
+  "password" : "world",
+  "collection" : [ {
+    "Series" : "Batman, Vol. 1",
+    "Issue" : 657,
+    "Full Title" : "Batman & Son, Part 3: Wonderboys",
+    "Variant Description" : "",
+    "Publisher" : "DC Comics",
+    "Release Date" : "Sep 2006",
+    "Format" : "Comic",
+    "Added Date" : "Feb 23, 2014",
+    "Creator" : "Grant Morrison | Andy Kubert | Jesse Delperdang",
+    "Value" : 12
   } ]
 } ]

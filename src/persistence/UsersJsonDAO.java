@@ -103,5 +103,18 @@ public class UsersJsonDAO implements UsersDAO {
         }
         return false;
     }
+
+    @Override
+    public boolean addUser(String username, String password) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        User user = new User(username, password, null);
+        users.add(user);
+        mapper.writeValue(new File(filename), users);
+        return true;
+    }
     
 }

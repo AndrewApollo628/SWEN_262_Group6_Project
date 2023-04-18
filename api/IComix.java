@@ -37,4 +37,6 @@ public interface IComix {
 
     void unSignComic(int comic) throws Exception;
 
+    boolean signup(String username, String password) throws Exception;
+
 }

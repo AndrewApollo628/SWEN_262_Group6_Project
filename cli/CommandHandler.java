@@ -20,6 +20,7 @@ public class CommandHandler {
         commands.put(Undo.COMMAND, new Undo(this));
         commands.put(Library.COMMAND, new Library(api));
         commands.put(MyCollection.COMMAND, new MyCollection(api));
+        commands.put(Signup.COMMAND, new Signup(api));
         // commands.put("exit", new Exit());
     }
 

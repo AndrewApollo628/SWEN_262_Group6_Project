@@ -26,4 +26,6 @@ public interface UsersDAO {
 
     boolean check(String username, String password) throws IOException;
 
+    boolean addUser(String username, String password) throws IOException;
+
 }
